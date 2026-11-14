@@ -133,3 +133,30 @@
 .sp-visual-disclaimer {font-size:.76rem;color:var(--ink-soft);margin:.65rem 0 0}
 @media(max-width:600px){.sp-sector-visuals__grid{grid-template-columns:1fr 1fr}.sp-sector-visuals figure:last-child{grid-column:1/-1}.sp-sector-visuals figcaption{font-size:.95rem;padding:.6rem}}
 @media(prefers-reduced-motion:reduce){.sp-sector-visuals img{transition:none}}
+
+/* V3 industrial/ESG services — original SPEDAR forest, teal, gold and serif/sans tokens. */
+.sp-industry-home{background:var(--white);border-top:1px solid var(--line)}
+.sp-industry-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;border:1px solid var(--line-strong);background:var(--line-strong)}
+.sp-industry-cards a{display:flex;flex-direction:column;min-width:0;background:var(--paper);padding:clamp(1.15rem,2vw,1.8rem);text-decoration:none;color:var(--ink);transition:background .2s}
+.sp-industry-cards a:hover{background:var(--sage)}
+.sp-industry-cards span{font-size:.7rem;color:var(--gold-ink);font-weight:600;letter-spacing:.09em}
+.sp-industry-cards h3{font-size:clamp(1.34rem,1.65vw,1.8rem);color:var(--forest);line-height:1.15;margin:1rem 0 .7rem}
+.sp-industry-cards p{font-size:.89rem;line-height:1.55;color:var(--ink-soft);margin-bottom:1.5rem}
+.sp-industry-cards strong{margin-top:auto;font-size:.8rem;font-weight:600;color:var(--teal-ink)}
+.sp-industry-jump{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center;background:var(--sage);border:1px solid var(--line-strong);padding:clamp(1.5rem,3vw,2.5rem);margin-bottom:2rem}
+.sp-industry-jump h3{font-size:clamp(1.5rem,2.2vw,2.1rem);max-width:22ch;color:var(--forest);margin:.5rem 0 1rem}
+.sp-industry-jump p{color:var(--ink-soft);font-size:.91rem;margin:0}
+.sp-industry-jump__links{display:flex;flex-direction:column;align-items:flex-start;gap:.8rem}
+.sp-industry-detail{display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+.sp-industry-detail h2{max-width:15ch}.sp-industry-detail p{color:var(--ink-soft)}
+.sp-industry-detail>ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+.sp-industry-detail>ul li{display:block;margin:0;padding:.9rem 0 .9rem 1.4rem;border-bottom:1px solid var(--line);position:relative;line-height:1.4}
+.sp-industry-detail>ul li::before{content:'+';position:absolute;left:.1rem;top:.9rem;color:var(--gold-ink);font-weight:600}
+.sp-industries-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;border:1px solid var(--line-strong);background:var(--line-strong)}
+.sp-industries-grid span{display:flex;align-items:center;min-height:95px;padding:1rem;background:var(--white);color:var(--forest);font-weight:500;line-height:1.4}
+.sp-lib-item[data-support="Specialist-led service"] .sp-lib-mini{color:var(--gold-ink)}
+.sp-lib-item[data-support="SPEDAR service"] .sp-lib-mini{color:var(--teal-ink)}
+@media(max-width:1120px){.sp-industry-cards,.sp-industries-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.sp-industry-jump,.sp-industry-detail{grid-template-columns:1fr;gap:1.3rem}}
+@media(max-width:580px){.sp-industry-cards,.sp-industries-grid{grid-template-columns:1fr}.sp-industry-cards a{padding:1.4rem}.sp-industries-grid span{min-height:0}}
+@media(prefers-reduced-motion:reduce){.sp-industry-cards a{transition:none}}

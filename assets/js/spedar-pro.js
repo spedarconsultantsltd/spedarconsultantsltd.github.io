@@ -17,13 +17,13 @@
       var block=q('.sp-pro-dropdown-links',menu);
       if(!block){
         block=el('div','sp-pro-dropdown-links');
-        [['service-directory.html','Complete Service Directory'],['sectors.html','Sectors & Applications'],['project-brief.html','Project Enquiry'],['faq.html','FAQs']].forEach(function(pair){var a=el('a',null,pair[1]);a.href=localPage(pair[0]);block.appendChild(a);});
+        [['industry-esg.html','Environmental & ESG'],['service-directory.html','Complete Service Directory'],['sectors.html','Sectors & Applications'],['project-brief.html','Project Enquiry'],['faq.html','FAQs']].forEach(function(pair){var a=el('a',null,pair[1]);a.href=localPage(pair[0]);block.appendChild(a);});
         menu.appendChild(block);
       }
     }
     var columns=qa('.footer-col');
     columns.forEach(function(col){var h=q('h2',col);if(!h||h.textContent.trim().toLowerCase()!=='company')return;var ul=q('ul',col);if(!ul)return;
-      [['service-directory.html','Complete service directory'],['sectors.html','Sectors & applications'],['project-brief.html','Project enquiry'],['collaborate.html','Careers & collaboration'],['faq.html','FAQs']].forEach(function(pair){if(q('a[href="'+pair[0]+'"]',ul))return;var li=el('li');var a=el('a',null,pair[1]);a.href=localPage(pair[0]);li.appendChild(a);ul.appendChild(li);});
+      [['industry-esg.html','Environmental & ESG services'],['service-directory.html','Complete service directory'],['sectors.html','Sectors & applications'],['project-brief.html','Project enquiry'],['collaborate.html','Careers & collaboration'],['faq.html','FAQs']].forEach(function(pair){if(q('a[href="'+pair[0]+'"]',ul))return;var li=el('li');var a=el('a',null,pair[1]);a.href=localPage(pair[0]);li.appendChild(a);ul.appendChild(li);});
     });
     if(path()==='services.html'){var main=q('main');var hero=main&&q('.page-hero',main);if(hero&&!q('.sp-pro-quickrail')){
       var band=el('div','sp-pro-quickrail');band.innerHTML='<div class="wrap sp-pro-quickrail__inner"><p><strong>Explore the expanded catalogue:</strong> '+countTotal()+' service topics across '+lib.categories.length+' disciplines</p><a href="service-directory.html">Open the searchable service directory ↗</a></div>';
@@ -35,7 +35,7 @@
     if(path()!=='services.html'||q('.sp-legacy-directory')||!lib.categories.length)return;
     var main=q('main');if(!main)return;
     var sec=el('section','sp-legacy-directory');sec.id='expanded-service-areas';
-    var wrap=el('div','wrap');var head=el('div');head.innerHTML='<span class="sp-eyebrow">EXPANDED CONSULTANCY DIRECTORY</span><h2>Specialist disciplines and service topics</h2><p>Browse detailed service areas. Current team capabilities and specialist-enquiry scopes are distinguished in the full directory.</p>';
+    var wrap=el('div','wrap');var head=el('div');head.innerHTML='<span class="sp-eyebrow">EXPANDED CONSULTANCY DIRECTORY</span><h2>Specialist disciplines and service topics</h2><p>Browse detailed service areas. SPEDAR offers these multidisciplinary services; specialist or regulated assignments require appropriately qualified practitioners.</p>';
     wrap.appendChild(head);var grid=el('div','sp-legacy-directory__grid');
     lib.categories.forEach(function(c){var d=el('details');d.innerHTML='<summary>'+esc(c.name)+' <small>('+c.items.length+')</small></summary><p>'+esc(c.intro)+'</p><ul>'+c.items.map(function(x){return '<li>'+esc(x.name)+'</li>';}).join('')+'</ul>';grid.appendChild(d);});
     wrap.appendChild(grid);var link=el('a','btn btn--primary','Search and shortlist services');link.href=localPage('service-directory.html');wrap.appendChild(link);

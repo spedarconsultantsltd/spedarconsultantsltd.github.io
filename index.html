@@ -23,6 +23,29 @@
 <link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
+<!-- Home hero only: keep calls to action visible without changing other pages. -->
+<style id="spedar-home-hero-compact">
+@media (min-width: 901px) {
+  .hero { min-height: min(74svh, 720px); }
+  .hero__inner {
+    padding-block: clamp(2rem, 4.5vh, 3.25rem) clamp(2rem, 5vh, 3.5rem);
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 1.35rem + 3.15vw, 4.2rem);
+    line-height: 1.045;
+    margin-bottom: 1.1rem;
+  }
+  .hero__lead {
+    font-size: clamp(1.03rem, .95rem + .24vw, 1.2rem);
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+  }
+}
+@media (max-width: 900px) {
+  .hero__inner { padding-block: 2.5rem 1.5rem; }
+}
+</style>
+
 <script src="assets/js/site-config.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 <link rel="preload" as="image" href="assets/images/landscape-truecolor.webp" imagesrcset="assets/images/landscape-truecolor-sm.webp 900w, assets/images/landscape-truecolor.webp 1600w" imagesizes="100vw">
@@ -286,5 +309,59 @@
     </div>
   </div>
 </footer>
+
+<!-- Home hero only: rotate existing map layers every 4.5s; manual buttons still work. -->
+<script id="spedar-home-map-auto-cycle">
+(function () {
+  'use strict';
+  function initHomeMapAutoCycle() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    var buttons = Array.prototype.slice.call(hero.querySelectorAll('.layer-switch button[data-show]'));
+    if (buttons.length < 2) return;
+
+    var delay = 4500;
+    var timer = null;
+    var visible = true;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function stop() {
+      if (timer !== null) { window.clearTimeout(timer); timer = null; }
+    }
+    function allowed() { return !reduceMotion && !document.hidden && visible; }
+    function schedule() {
+      stop();
+      if (!allowed()) return;
+      timer = window.setTimeout(function () {
+        var current = buttons.findIndex(function (b) { return b.getAttribute('aria-pressed') === 'true'; });
+        buttons[(current + 1) % buttons.length].click();
+        schedule();
+      }, delay);
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        // Existing main.js handles the instant change, legends, and active state.
+        // After a visitor selects a layer, give them a full 4.5s to view it.
+        if (e.isTrusted) schedule();
+      });
+    });
+    document.addEventListener('visibilitychange', schedule);
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        schedule();
+      }, { threshold: 0.12 });
+      observer.observe(hero);
+    }
+    schedule();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHomeMapAutoCycle);
+  } else {
+    initHomeMapAutoCycle();
+  }
+})();
+</script>
 </body>
 </html>

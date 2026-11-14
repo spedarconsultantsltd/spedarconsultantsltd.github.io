@@ -24,18 +24,27 @@ window.SPEDAR_CONFIG = {
   }
 };
 
-// Load small editorial improvements on every existing page. The site's
-// existing main.js remains untouched (including automatic map rotation).
+// Load brand-preserving improvements from the site root, including article pages
+// nested under /insights/. Original main.js and existing page markup stay untouched.
 (function () {
-  var cssHref = 'assets/css/spedar-enrich.css';
-  if (!document.querySelector('link[href="' + cssHref + '"]')) {
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = cssHref;
-    document.head.appendChild(css);
+  var root = new URL('../../', document.currentScript.src).href;
+  function style(file) {
+    if (document.querySelector('link[href$="/' + file + '"]')) return;
+    var link = document.createElement('link'); link.rel = 'stylesheet';
+    link.href = root + 'assets/css/' + file; document.head.appendChild(link);
   }
-  var script = document.createElement('script');
-  script.src = 'assets/js/spedar-enrich.js';
-  script.defer = true;
-  document.head.appendChild(script);
+  style('spedar-enrich.css'); style('spedar-pro.css');
+  if (!document.querySelector('script[src$="/spedar-enrich.js"]')) {
+    var enrich = document.createElement('script');
+    enrich.src = root + 'assets/js/spedar-enrich.js'; document.head.appendChild(enrich);
+  }
+  if (!document.querySelector('script[src$="/spedar-pro.js"]')) {
+    var data = document.createElement('script'); data.src = root + 'assets/js/spedar-data.js';
+    data.onload = function () {
+      if (document.querySelector('script[src$="/spedar-pro.js"]')) return;
+      var pro = document.createElement('script');
+      pro.src = root + 'assets/js/spedar-pro.js'; document.head.appendChild(pro);
+    };
+    document.head.appendChild(data);
+  }
 })();

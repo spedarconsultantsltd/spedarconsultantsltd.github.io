@@ -1,13 +1,14 @@
 /* SPEDAR Consultants — small, progressive enhancements for consultancy pages. */
 (function () {
   'use strict';
+  var siteRoot = new URL('../../', document.currentScript.src).pathname;
   function init() {
     // Add capability statement inside an existing navigation group, not an
     // extra top-level nav item that would crowd the current header.
     var allServices = document.querySelector('#services-menu .dropdown__all');
     if (allServices && !allServices.querySelector('a[href="capabilities.html"]')) {
       var capNav = document.createElement('a');
-      capNav.href = 'capabilities.html';
+      capNav.href = siteRoot + 'capabilities.html';
       capNav.textContent = 'Capabilities & delivery';
       capNav.style.marginLeft = '.9rem';
       allServices.appendChild(capNav);
@@ -22,7 +23,7 @@
         if (list && !list.querySelector('a[href="capabilities.html"]')) {
           var item = document.createElement('li');
           var link = document.createElement('a');
-          link.href = 'capabilities.html';
+          link.href = siteRoot + 'capabilities.html';
           link.textContent = 'Capabilities & delivery';
           item.appendChild(link);
           list.appendChild(item);

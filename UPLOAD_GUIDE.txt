@@ -1,0 +1,125 @@
+SPEDAR CONSULTANTS | COMPLETE PROFESSIONAL WEBSITE ENRICHMENT
+14 NOVEMBER 2026 | GitHub Pages | UPDATE PACKAGE, 15 WEBSITE FILES
+
+READ FIRST
+==========
+This ZIP adds the actual expanded service catalogue and interactive website
+features to the EXISTING spedarconsultantsltd.github.io repository. It is not
+an empty redesign and not a replacement for your existing image/font assets.
+Keep all files already in the repository that are not in this ZIP.
+
+WHAT HAS BEEN IMPLEMENTED
+=========================
+1. 239 individual service topics across 18 consultancy disciplines.
+2. Interactive, SEARCHABLE and FILTERABLE full service directory:
+   - Search, discipline, delivery-pathway filters
+   - Expand/collapse sections, select up to 12 services
+   - Selected-service project enquiry flow, copy list and clear selection
+3. Original SERVICES page: new prominent link to the full directory and an
+   additional 18-category service list injected progressively.
+4. Home page: prominent SIX-CARD service showcase (with direct category links),
+   sectors link and FAQs link, plus prior editorial sections.
+5. Sectors page: 24 application sectors with interactive filters and existing
+   illustrative SPEDAR image assets (not project photos or client evidence).
+6. Project Brief Builder: name, organisation, scope, location, timeline and
+   selected services. It opens an EMAIL DRAFT in the visitor's mail app.
+   The visitor must send the email manually; no server or backend is used.
+7. Capabilities & Delivery page: existing-theme service overview, workflow,
+   quality expectations and Print / Save option.
+8. Careers & Collaboration page: honest project-based expression of interest,
+   no false job vacancy announcements.
+9. Frequently Asked Questions page (12 concise answers).
+10. Shared navigation/footer links on existing Home, Services, About, Work,
+    Team, Insights and Contact pages (including nested Insights articles).
+11. Updated sitemap.xml, canonical/Open Graph tags for NEW pages and Home.
+12. Original Home Map Hero, 4.5-second layer auto-rotation and manual buttons
+    remain EXACTLY as in the last approved Home version.
+
+IMPORTANT: CLAIMS AND PROFESSIONAL SCOPE
+=======================================
+The directory describes topics that can be considered or scoped. It does not
+mean SPEDAR already has in-house capacity for every field. Core/current-team
+aligned topics are tagged "Team capability" and professional specialist
+fields are tagged "Specialist scoping". Specialist fees, licenses, registration,
+appointment, technical equipment, insurance, permissions and sign-off must be
+verified for each assignment. No competitor's projects, client logos,
+certifications, counts or awards are attributed to SPEDAR.
+
+EXACT WEBSITE FILES TO UPLOAD (15)
+=================================
+ROOT:
+  index.html                  REPLACE
+  capabilities.html           NEW if not already uploaded, otherwise REPLACE
+  service-directory.html      NEW
+  sectors.html                NEW
+  project-brief.html          NEW
+  collaborate.html            NEW
+  faq.html                    NEW
+  sitemap.xml                 REPLACE
+  robots.txt                  REPLACE
+
+assets/css/:
+  spedar-enrich.css           NEW if missing, otherwise REPLACE
+  spedar-pro.css              NEW
+
+assets/js/:
+  site-config.js              REPLACE
+  spedar-enrich.js            NEW if missing, otherwise REPLACE
+  spedar-data.js              NEW
+  spedar-pro.js               NEW
+
+UPLOAD_GUIDE.txt is an instruction file, not needed by the website.
+DO NOT delete/replace assets/css/style.css, assets/js/main.js, any images,
+fonts, team photos, Insights articles or existing other HTML pages.
+
+GITHUB WEB UPLOAD PROCEDURE (NO COMMAND LINE)
+=============================================
+1. Download and EXTRACT this ZIP. DO NOT upload the ZIP itself.
+2. Open https://github.com/spedarconsultantsltd/spedarconsultantsltd.github.io
+3. Code > Add file > Upload files.
+4. Drag the 9 ROOT files above into the repository ROOT and Commit changes.
+5. Open assets/css in the GitHub repository > Add file > Upload files.
+   Upload spedar-enrich.css and spedar-pro.css, then Commit.
+6. Open assets/js in the GitHub repository > Add file > Upload files.
+   Upload site-config.js, spedar-enrich.js, spedar-data.js,
+   spedar-pro.js, then Commit.
+7. Wait for the GitHub Pages workflow to succeed; then hard refresh Ctrl+Shift+R.
+
+There are only 15 website files in this update, so you do NOT need to split
+into multiple ZIPs for the GitHub 100-file browser upload limit.
+
+LIVE CHECKLIST AFTER DEPLOY
+===========================
+A. https://spedarconsultantsltd.github.io/
+   See the new service showcase on the HOME page below the existing expertise.
+B. https://spedarconsultantsltd.github.io/services.html
+   See the new expanded directory link and 18 service-area groups.
+C. https://spedarconsultantsltd.github.io/service-directory.html
+   Search for hydrodynamic, Fintech, EIA, GIS; use filters and select services.
+D. https://spedarconsultantsltd.github.io/sectors.html
+   Filter by Climate or Water; see the illustrative map cards.
+E. https://spedarconsultantsltd.github.io/project-brief.html
+   Verify fields and prefilling by choosing services from the directory.
+F. https://spedarconsultantsltd.github.io/collaborate.html
+G. https://spedarconsultantsltd.github.io/faq.html
+H. https://spedarconsultantsltd.github.io/capabilities.html
+I. Original map rotates at ~4.5 sec and manual True colour/NDVI/Land cover works.
+J. Check menu/footer links on desktop and phone. Do not upload unverified claims.
+
+SOURCE-INFORMED SERVICE RESEARCH
+===============================
+Inspired by structural features and service topics from (not copied verbatim):
+- Sheltech Consultants: scplbd.com (planning, civil design, WASH, transport)
+- EQMS Consulting: eqmscl.com (16 service categories, environments/social)
+- CEGIS: web.cegisbd.com (geoinformatics, water, ecology, policy, training)
+- PLANCON: plancon-bd.com (planning, surveying, feasibility, CBA, DPP)
+- O.CREEDS: ocreeds.com (hydrology, FSM, ESIA, drone, climate)
+- AHYDTECH: ahydtechbd.com (water engineering, morphology, hydrographic survey)
+- DevCon: devconbd.com (full project cycle, transport, safeguards, M&E)
+
+NOTE ON VISUAL QA
+=================
+Static HTML structure, sitemap, internal update links, JavaScript syntax and
+CSS parsing have been checked. A full browser visual check against the
+LIVE GitHub Pages site is still necessary after the ZIP is installed.
+The HTML, CSS, JS and images are presented in the original SPEDAR theme.

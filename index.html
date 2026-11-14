@@ -49,6 +49,40 @@
 /* Home only: remove the large empty strip after the map hero.
    Preserve the compact hero and all existing map interactions. */
 .hero + .section { padding-top: .75rem; }
+
+/* SPEDAR homepage refinement — retains original brand typography & colours. */
+.hero + .home-intro { padding-top: clamp(2.75rem, 4.4vw, 4.25rem); }
+.home-intro { padding-bottom: clamp(2.75rem, 4.6vw, 4.5rem); }
+.home-intro .intro__body > p:not(.lead) { color: var(--ink-soft); max-width: 44rem; }
+.home-intro .intro__body > .text-link { margin-top: .25rem; }
+.home-expertise, .home-feature, .home-team, .home-cta { padding-block: clamp(3rem, 5vw, 5.25rem); }
+.home-service-more { margin-top: clamp(1.65rem, 3vw, 2.5rem); padding-top: 1.25rem; border-top: 1px solid var(--line); display: flex; gap: 1rem 2.5rem; justify-content: space-between; align-items: flex-start; }
+.home-service-more > p { color: var(--ink-soft); font-size: .96rem; line-height: 1.6; margin: 0; max-width: 41ch; }
+.home-service-more__links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .75rem 1.4rem; }
+.home-service-more__links .text-link { white-space: nowrap; font-size: .93rem; }
+.home-feature .feature__body h2 { font-size: clamp(2.05rem, 3vw, 3.5rem); max-width: 22ch; }
+.home-feature .feature__body p:not(.kicker) { color: var(--ink-soft); max-width: 42ch; }
+.home-feature .feature__body .btn { margin-top: .75rem; }
+.home-team-people { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.home-team-person { background: var(--paper); border: 1px solid var(--line); padding: .85rem 1rem; display: flex; align-items: center; gap: 1rem; min-width: 0; text-decoration: none; color: var(--ink); transition: border-color .2s var(--ease), background .2s var(--ease); }
+.home-team-person:hover { background: var(--sage); border-color: var(--line-strong); color: var(--forest); }
+.home-team-person img { width: 70px; height: 70px; object-fit: cover; object-position: center 22%; border-radius: 50%; flex: 0 0 70px; background: var(--sage); }
+.home-team-person span { min-width: 0; }
+.home-team-person strong { display: block; font-size: .98rem; line-height: 1.35; margin-bottom: .25rem; }
+.home-team-person small { display: block; font-size: .8rem; line-height: 1.4; color: var(--ink-soft); }
+.home-team-end { margin: 1.4rem 0 0; }
+.home-cta__extra { margin: 1.15rem 0 0; }
+@media (max-width: 1080px) {
+  .home-service-more { flex-direction: column; }
+  .home-service-more__links { justify-content: flex-start; }
+  .home-team-people { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .home-team-people { grid-template-columns: 1fr; }
+  .home-team-person img { width: 60px; height: 60px; flex-basis: 60px; }
+  .home-expertise, .home-feature, .home-team, .home-cta { padding-block: clamp(2.5rem, 8vw, 3.25rem); }
+  .home-service-more__links { gap: .9rem 1.25rem; }
+}
 </style>
 
 <script src="assets/js/site-config.js" defer></script>
@@ -124,217 +158,111 @@
   </aside>
 </section>
 
-<section class="section" aria-labelledby="intro-title">
+<section class="section home-intro" aria-labelledby="intro-title">
   <div class="wrap intro">
-    <div class="intro__title"><h2 id="intro-title">Research-led thinking. Practical solutions.</h2></div>
+    <div class="intro__title"><h2 id="intro-title">Research-led thinking.<br>Practical solutions.</h2></div>
     <div class="intro__body">
-      <p class="lead">SPEDAR is an emerging multidisciplinary consultancy based in Bangladesh. We bring planners, geographers, environmental scientists, GIS analysts, social researchers and digital specialists together on one team.</p>
-      <p>Complex development questions rarely sit inside one discipline. A forest restoration plan needs satellite analysis, ecology and community insight; a planning study needs spatial data, socioeconomic surveys and clear communication. We design each assignment around the evidence it needs, then turn that evidence into outputs that decision-makers can use.</p>
-      <ul class="discipline-list" aria-label="Disciplines represented on the team">
-        <li>Urban &amp; regional planning</li><li>Geography &amp; environment</li><li>Remote sensing</li><li>Social research</li><li>Software engineering</li><li>Design &amp; communication</li>
-      </ul>
-      <a class="text-link" href="about.html">About SPEDAR</a>
+      <p class="lead">SPEDAR brings together planners, environmental researchers, GIS specialists, survey professionals and digital experts to support informed decisions.</p>
+      <p>Our multidisciplinary approach connects technical evidence with practical planning, sustainability and development needs.</p>
+      <a class="text-link" href="about.html">Learn about SPEDAR</a>
     </div>
   </div>
 </section>
 
-<section class="section bg-white" aria-labelledby="expertise-title">
+<section class="section bg-white home-expertise" aria-labelledby="expertise-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="expertise-title">Our expertise</h2>
-      <p class="section-head__deck">Six connected practice areas, staffed by specialists who work across project boundaries.</p>
+      <p class="section-head__deck">Our principal practice areas, supported by a wider multidisciplinary service offering.</p>
     </div>
     <div class="practice-index"><article class="practice">
-  <svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-gis"></use></svg>
-  <h3><a href="services.html#gis">GIS &amp; Remote Sensing</a></h3>
-  <p>Mapping, satellite image analysis and spatial databases that turn location data into evidence.</p>
-  <span class="practice__more" aria-hidden="true">View services</span>
+<svg aria-hidden="true" class="practice__icon" focusable="false"><use href="assets/icons/icons.svg#i-gis"></use></svg>
+<h3><a href="services.html#gis">GIS &amp; Remote Sensing</a></h3>
+<p>Mapping, satellite image analysis and spatial databases that turn location data into evidence.</p>
+<span aria-hidden="true" class="practice__more">View services</span>
 </article><article class="practice">
-  <svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-climate"></use></svg>
-  <h3><a href="services.html#environment">Environmental &amp; Climate Consulting</a></h3>
-  <p>Baseline studies, climate vulnerability assessment and environmental monitoring support.</p>
-  <span class="practice__more" aria-hidden="true">View services</span>
+<svg aria-hidden="true" class="practice__icon" focusable="false"><use href="assets/icons/icons.svg#i-climate"></use></svg>
+<h3><a href="services.html#environment">Environmental &amp; Climate Consulting</a></h3>
+<p>Baseline studies, climate vulnerability assessment and environmental monitoring support.</p>
+<span aria-hidden="true" class="practice__more">View services</span>
 </article><article class="practice">
-  <svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-urban"></use></svg>
-  <h3><a href="services.html#planning">Urban &amp; Regional Planning</a></h3>
-  <p>Land-use, settlement and infrastructure analysis for sustainable spatial development.</p>
-  <span class="practice__more" aria-hidden="true">View services</span>
+<svg aria-hidden="true" class="practice__icon" focusable="false"><use href="assets/icons/icons.svg#i-urban"></use></svg>
+<h3><a href="services.html#planning">Urban &amp; Regional Planning</a></h3>
+<p>Land-use, settlement and infrastructure analysis for sustainable spatial development.</p>
+<span aria-hidden="true" class="practice__more">View services</span>
 </article><article class="practice">
-  <svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-research"></use></svg>
-  <h3><a href="services.html#research">Research &amp; Development</a></h3>
-  <p>Applied research design, field surveys, socioeconomic assessment and technical reporting.</p>
-  <span class="practice__more" aria-hidden="true">View services</span>
+<svg aria-hidden="true" class="practice__icon" focusable="false"><use href="assets/icons/icons.svg#i-research"></use></svg>
+<h3><a href="services.html#research">Research &amp; Development</a></h3>
+<p>Applied research design, field surveys, socioeconomic assessment and technical reporting.</p>
+<span aria-hidden="true" class="practice__more">View services</span>
 </article><article class="practice">
-  <svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-data"></use></svg>
-  <h3><a href="services.html#digital">Data Analytics &amp; Digital Solutions</a></h3>
-  <p>Data analysis, dashboards, interactive maps, websites and software prototypes.</p>
-  <span class="practice__more" aria-hidden="true">View services</span>
+<svg aria-hidden="true" class="practice__icon" focusable="false"><use href="assets/icons/icons.svg#i-data"></use></svg>
+<h3><a href="services.html#digital">Data Analytics &amp; Digital Solutions</a></h3>
+<p>Data analysis, dashboards, interactive maps, websites and software prototypes.</p>
+<span aria-hidden="true" class="practice__more">View services</span>
 </article><article class="practice">
-  <svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-sustain"></use></svg>
-  <h3><a href="services.html#sustainability">Sustainability &amp; Development Advisory</a></h3>
-  <p>Policy analysis, SDG-aligned research and resilience strategies for development programmes.</p>
-  <span class="practice__more" aria-hidden="true">View services</span>
+<svg aria-hidden="true" class="practice__icon" focusable="false"><use href="assets/icons/icons.svg#i-sustain"></use></svg>
+<h3><a href="services.html#sustainability">Sustainability &amp; Development Advisory</a></h3>
+<p>Policy analysis, SDG-aligned research and resilience strategies for development programmes.</p>
+<span aria-hidden="true" class="practice__more">View services</span>
 </article></div>
-  </div>
-</section>
-
-
-
-<section class="section sp-industry-home" aria-labelledby="industry-services-title">
-  <div class="wrap">
-    <div class="sp-pro-section-head"><div><span class="sp-eyebrow">ENVIRONMENTAL · INDUSTRIAL · SUSTAINABILITY</span><h2 id="industry-services-title">Environmental compliance to sustainable industry.</h2></div><p>Our services span environmental inspection and monitoring, green building support, energy audits, carbon accounting, industrial waste management and ESG reporting.</p></div>
-    <div class="sp-industry-cards">
-      <a href="industry-esg.html#inspection"><span>01 / INSPECTION</span><h3>Environmental testing &amp; compliance</h3><p>Indoor and ambient air, stack emissions, noise, lighting, boiler and generator performance, environmental monitoring and EHS assessment.</p><strong>Explore services →</strong></a>
-      <a href="industry-esg.html#green"><span>02 / GREEN FACILITIES</span><h3>Energy, Higg FEM &amp; LEED support</h3><p>Facility energy efficiency, green building readiness, apparel environmental performance, certification documentation and improvement plans.</p><strong>Explore services →</strong></a>
-      <a href="industry-esg.html#carbon"><span>03 / ESG &amp; CARBON</span><h3>GHG, climate &amp; sustainability</h3><p>Corporate carbon footprints, Scope 1–3 inventories, sustainability reporting, disclosure frameworks and decarbonisation pathways.</p><strong>Explore services →</strong></a>
-      <a href="industry-esg.html#waste"><span>04 / INDUSTRIAL SOLUTIONS</span><h3>Waste, chemicals &amp; emissions control</h3><p>Waste management, 3R plans, chemical compliance, cleaner production, wastewater and air emission abatement options.</p><strong>Explore services →</strong></a>
+    <div class="home-service-more">
+      <p>Looking for a specialist service in engineering, water resources, environmental assessment or industrial sustainability?</p>
+      <div class="home-service-more__links">
+        <a class="text-link" href="service-directory.html">View all services</a>
+        <a class="text-link" href="industry-esg.html">Environmental &amp; ESG</a>
+        <a class="text-link" href="sectors.html">Explore sectors</a>
+      </div>
     </div>
-    <div class="sp-showcase-actions"><a class="btn btn--primary" href="industry-esg.html">All environmental &amp; industrial services</a><a class="text-link" href="service-directory.html">Explore the full consultancy catalogue</a></div>
-  </div>
-</section>
-<section class="section bg-white sp-services-showcase" aria-labelledby="expanded-services"><div class="wrap"><div class="sp-pro-section-head"><div><span class="sp-eyebrow">EXPANDED MULTIDISCIPLINARY SERVICES</span><h2 id="expanded-services">An extensive consultancy service directory.</h2></div><p>Explore <strong>350 service topics in 21 disciplines</strong>—from GIS and planning to environmental safeguards, hydrology, engineering, WASH, economic studies and digital systems. All services are offered through defined project scopes, with specialist oversight where required.</p></div><div class="sp-home-service-grid"><a href="service-directory.html?category=gis"><span>01</span><strong>GIS &amp; Mapping</strong><small>Remote sensing, geospatial data and decision support</small></a><a href="service-directory.html?category=planning"><span>02</span><strong>Planning &amp; Infrastructure</strong><small>Urban, rural, mobility and feasibility studies</small></a><a href="service-directory.html?category=environment"><span>03</span><strong>Environment &amp; Climate</strong><small>Safeguards, biodiversity, risk and resilience</small></a><a href="service-directory.html?category=water"><span>04</span><strong>Water &amp; Hydrology</strong><small>River, hydraulic and flood modelling enquiries</small></a><a href="service-directory.html?category=engineering"><span>05</span><strong>Engineering &amp; WASH</strong><small>Detailed design, survey and technical collaboration</small></a><a href="service-directory.html?category=digital"><span>06</span><strong>Data &amp; Software</strong><small>Dashboards, websites, automation and web GIS</small></a></div><div class="sp-showcase-actions"><a class="btn btn--primary" href="service-directory.html">Browse all services</a><a class="text-link" href="sectors.html">Explore sectors &amp; applications</a><a class="text-link" href="faq.html">FAQs</a></div></div></section>
-<section class="section bg-sage sp-sector-section" aria-labelledby="sp-sectors-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="sp-sectors-title">Where our methods can help</h2>
-      <p class="section-head__deck">Different sectors, shared need for reliable evidence. These are areas where our team's skills can support project and research questions.</p>
-    </div>
-    <div class="sp-sector-grid">
-      <a class="sp-sector" href="services.html#planning"><span class="sp-sector__number">01 / SPATIAL DEVELOPMENT</span><h3>Cities &amp; settlements</h3><p>Land-use change, accessibility, infrastructure options and spatial development priorities.</p><span class="sp-sector__link">Explore planning expertise <span aria-hidden="true">↗</span></span></a>
-      <a class="sp-sector" href="services.html#gis"><span class="sp-sector__number">02 / LAND &amp; ECOSYSTEMS</span><h3>Land &amp; landscapes</h3><p>Satellite-based change analysis, vegetation patterns, landscape connectivity and mapped evidence.</p><span class="sp-sector__link">Explore geospatial expertise <span aria-hidden="true">↗</span></span></a>
-      <a class="sp-sector" href="services.html#environment"><span class="sp-sector__number">03 / ENVIRONMENT &amp; RISK</span><h3>Climate &amp; resilience</h3><p>Baseline assessment, exposure mapping and climate-informed research for local decisions.</p><span class="sp-sector__link">Explore environmental expertise <span aria-hidden="true">↗</span></span></a>
-      <a class="sp-sector" href="services.html#research"><span class="sp-sector__number">04 / PEOPLE &amp; POLICY</span><h3>Communities &amp; livelihoods</h3><p>Field surveys, stakeholder perspectives, socioeconomic analysis and actionable reporting.</p><span class="sp-sector__link">Explore research expertise <span aria-hidden="true">↗</span></span></a>
-    </div>
-    <div class="sp-sector-end"><span>Have a different type of assignment in mind?</span><a class="text-link" href="capabilities.html">See our capabilities &amp; approach</a></div>
   </div>
 </section>
 
-<section class="section bg-ink on-dark" aria-labelledby="approach-title">
-  <div class="wrap principles">
-    <div class="principles__head"><div class="sticky">
-      <h2 id="approach-title">What makes our approach different</h2>
-      <p>We are a young firm, so we lead with method rather than history. These principles shape every proposal and deliverable.</p>
-      <a class="text-link" href="about.html#approach">How we work</a>
-    </div></div>
-    <ul class="principles__list">
-      <li><h3>Evidence first</h3><p>Recommendations follow from data and documented methods. We state assumptions, report uncertainty and separate findings from interpretation.</p></li>
-      <li><h3>Integrated expertise</h3><p>Spatial analysts, planners, social researchers and developers work on the same problem from the start, rather than handing work along a chain.</p></li>
-      <li><h3>Technology with purpose</h3><p>We use open satellite data, GIS, statistical tools and custom software where they improve accuracy, speed or clarity, not for their own sake.</p></li>
-      <li><h3>Grounded in context</h3><p>Our team knows Bangladesh's landscapes, institutions and communities. Field verification and local knowledge sit alongside remote analysis.</p></li>
-      <li><h3>Collaborative delivery</h3><p>We agree scope, milestones and review points with clients and partners, and share interim results so that the final product meets real needs.</p></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="featured-title">
+<section class="section home-feature" aria-labelledby="featured-title">
   <div class="wrap feature">
-    <figure class="feature__media" data-reveal>
-      <div class="plate"><img src="assets/images/landscape-ndvi.webp" srcset="assets/images/landscape-ndvi-sm.webp 900w, assets/images/landscape-ndvi.webp 1600w" sizes="(max-width: 900px) 100vw, 58vw" width="1600" height="1200" alt="Illustrative vegetation-index map of a hilly forest landscape with a river valley" loading="lazy" decoding="async"><span class="plate__tag">Illustrative graphic</span></div>
-      <figcaption>Illustration of the type of vegetation-index mapping used in forest change studies. Not a study output.</figcaption>
-    </figure>
+    <figure class="feature__media" data-reveal="">
+<div class="plate"><img alt="Illustrative vegetation-index map of a hilly forest landscape with a river valley" decoding="async" height="1200" loading="lazy" sizes="(max-width: 900px) 100vw, 58vw" src="assets/images/landscape-ndvi.webp" srcset="assets/images/landscape-ndvi-sm.webp 900w, assets/images/landscape-ndvi.webp 1600w" width="1600"/><span class="plate__tag">Illustrative graphic</span></div>
+<figcaption>Illustration of the type of vegetation-index mapping used in forest change studies. Not a study output.</figcaption>
+</figure>
     <div class="feature__body">
-      <p class="kicker">Featured research</p>
-      <h2 id="featured-title">Forest fragmentation and connectivity in the Chattogram Hill Tracts</h2>
-      <p>A research collaboration announced with the Institute of Forestry and Environmental Sciences, University of Chittagong, examining how forest cover in Lama Upazila has changed over the past decade and what that means for ecological connectivity.</p>
-      <dl class="facts">
-        <dt>Study area</dt><dd>Lama Upazila, Bandarban, Chattogram Hill Tracts</dd>
-        <dt>Period</dt><dd>2015 to 2025</dd>
-        <dt>Data</dt><dd>Sentinel-2 multispectral imagery</dd>
-        <dt>Methods</dt><dd>GIS, vegetation indices, fragmentation and connectivity analysis</dd>
-        <dt>Status</dt><dd><span class="status">Ongoing research</span></dd>
-      </dl>
-      <a class="btn btn--primary" href="work.html#forest-connectivity">Read about the study</a>
+      <p class="kicker">Selected research focus</p>
+      <h2 id="featured-title">Forest fragmentation and landscape connectivity</h2>
+      <p>Explore how remote sensing and GIS can help examine land-cover change, forest fragmentation and ecological connectivity in the Chattogram Hill Tracts.</p>
+      <a class="btn btn--primary" href="work.html#forest-connectivity">Explore our work</a>
     </div>
   </div>
 </section>
 
-
-<section class="section bg-white sp-brief-section" aria-labelledby="sp-brief-title">
-  <div class="wrap">
-    <div class="sp-brief-header">
-      <div><span class="sp-eyebrow">START WITH THE QUESTION</span><h2 id="sp-brief-title">Not sure which service fits your project?</h2></div>
-      <p>Choose the question closest to yours. See the relevant practice area and examples of possible outputs—then tell us what you need.</p>
-    </div>
-    <div class="sp-brief-layout" data-sp-brief>
-      <div class="sp-brief-options" role="group" aria-label="Project enquiry type">
-        <button type="button" class="sp-brief-option is-selected" aria-pressed="true" data-sp-topic="mapping"><span class="sp-option-index">01</span> We need maps or spatial analysis <span aria-hidden="true">↗</span></button>
-        <button type="button" class="sp-brief-option" aria-pressed="false" data-sp-topic="planning"><span class="sp-option-index">02</span> We are assessing a development idea <span aria-hidden="true">↗</span></button>
-        <button type="button" class="sp-brief-option" aria-pressed="false" data-sp-topic="environment"><span class="sp-option-index">03</span> We need environmental evidence <span aria-hidden="true">↗</span></button>
-        <button type="button" class="sp-brief-option" aria-pressed="false" data-sp-topic="research"><span class="sp-option-index">04</span> We need surveys or research <span aria-hidden="true">↗</span></button>
-        <button type="button" class="sp-brief-option" aria-pressed="false" data-sp-topic="digital"><span class="sp-option-index">05</span> We need a dashboard or web tool <span aria-hidden="true">↗</span></button>
-      </div>
-      <div class="sp-brief-results" aria-live="polite" aria-atomic="true">
-        <article class="sp-brief-result" data-sp-result="mapping"><span class="sp-eyebrow">GIS &amp; REMOTE SENSING</span><h3>Turn locations and imagery into usable evidence.</h3><p>Useful starting materials: study area, available spatial data, project objectives and required map scale.</p><div class="sp-result-label">Indicative outputs</div><ul><li>GIS maps and spatial datasets</li><li>Land-use / land-cover change analysis</li><li>Geospatial findings brief</li></ul><a class="text-link" href="services.html#gis">Explore this capability</a></article>
-        <article class="sp-brief-result" data-sp-result="planning" hidden><span class="sp-eyebrow">URBAN &amp; REGIONAL PLANNING</span><h3>Make planning questions easier to evaluate.</h3><p>Useful starting materials: site or study boundary, development objective, existing plans and stakeholder context.</p><div class="sp-result-label">Indicative outputs</div><ul><li>Spatial planning analysis</li><li>Land-use and access assessments</li><li>Planning options and research notes</li></ul><a class="text-link" href="services.html#planning">Explore this capability</a></article>
-        <article class="sp-brief-result" data-sp-result="environment" hidden><span class="sp-eyebrow">ENVIRONMENTAL &amp; CLIMATE</span><h3>Build a clearer environmental evidence base.</h3><p>Useful starting materials: location, environmental concern, available observations and assessment purpose.</p><div class="sp-result-label">Indicative outputs</div><ul><li>Environmental baseline summaries</li><li>Climate exposure and vulnerability maps</li><li>Research synthesis and recommendations</li></ul><a class="text-link" href="services.html#environment">Explore this capability</a></article>
-        <article class="sp-brief-result" data-sp-result="research" hidden><span class="sp-eyebrow">RESEARCH &amp; FIELD STUDIES</span><h3>Connect field realities with analytical decisions.</h3><p>Useful starting materials: research question, target community, sample needs and required evidence.</p><div class="sp-result-label">Indicative outputs</div><ul><li>Research instruments and survey plans</li><li>Cleaned datasets and analysis</li><li>Technical reports and visual summaries</li></ul><a class="text-link" href="services.html#research">Explore this capability</a></article>
-        <article class="sp-brief-result" data-sp-result="digital" hidden><span class="sp-eyebrow">DATA &amp; DIGITAL SOLUTIONS</span><h3>Give complex information a practical interface.</h3><p>Useful starting materials: target users, datasets, intended decisions and existing workflow.</p><div class="sp-result-label">Indicative outputs</div><ul><li>Interactive dashboards and web maps</li><li>Website and application prototypes</li><li>Data presentation and handover notes</li></ul><a class="text-link" href="services.html#digital">Explore this capability</a></article>
-        <p class="sp-brief-disclaimer">Outputs are examples, not a fixed package. Scope and specialist availability are confirmed for each assignment.</p>
-      </div>
-    </div>
-    <div class="sp-brief-footer"><span>Every good engagement starts with a well-defined question.</span><a class="btn btn--primary" href="contact.html">Discuss your project</a></div>
-  </div>
-</section>
-
-<section class="section bg-sage" aria-labelledby="people-title">
+<section class="section bg-white home-team" aria-labelledby="people-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="people-title">Our people</h2>
-      <p class="section-head__deck">A team of twelve professionals across GIS, research, planning, software, design and administration, led by practitioners with consultancy and research experience.</p>
+      <p class="section-head__deck">A multidisciplinary team working across research, planning, geospatial analysis and digital solutions.</p>
     </div>
-    <div class="people"><figure class="person"><div class="portrait" role="img" aria-label="Portrait of Md. Tahatul Azid"><span aria-hidden="true">TA</span><img src="assets/images/team/tahatul-azid.webp" alt="Md. Tahatul Azid" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption><h3>Md. Tahatul Azid</h3><p>Chief Executive Officer &amp; Managing Director</p></figcaption></figure><figure class="person"><div class="portrait portrait--teal" role="img" aria-label="Portrait of Tanmoy Dev"><span aria-hidden="true">TD</span><img src="assets/images/team/tanmoy-dev.webp" alt="Tanmoy Dev" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption><h3>Tanmoy Dev</h3><p>Head of GIS &amp; Remote Sensing</p></figcaption></figure><figure class="person"><div class="portrait portrait--teal" role="img" aria-label="Portrait of Kallyani Chakma"><span aria-hidden="true">KC</span><img src="assets/images/team/kallyani-chakma.webp" alt="Kallyani Chakma" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption><h3>Kallyani Chakma</h3><p>Head of Research &amp; Development</p></figcaption></figure><figure class="person"><div class="portrait portrait--teal" role="img" aria-label="Portrait of Md. Niyamul Pratiti"><span aria-hidden="true">NP</span><img src="assets/images/team/niyamul-pratiti.webp" alt="Md. Niyamul Pratiti" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption><h3>Md. Niyamul Pratiti</h3><p>Web Development Lead</p></figcaption></figure><figure class="person"><div class="portrait portrait--teal" role="img" aria-label="Portrait of Muhammad Raza"><span aria-hidden="true">MZ</span><img src="assets/images/team/muhammad-raza.webp" alt="Muhammad Raza" width="800" height="1000" loading="lazy" decoding="async"></div><figcaption><h3>Muhammad Raza</h3><p>Creative Design &amp; Digital Marketing Lead</p></figcaption></figure></div>
-    <p class="mt-5"><a class="text-link" href="team.html">Meet the full team</a></p>
+    <div class="home-team-people">
+      <a class="home-team-person" href="team.html">
+        <img src="assets/images/team/tahatul-azid.webp" alt="" width="80" height="80" loading="lazy" decoding="async">
+        <span><strong>Md. Tahatul Azid</strong><small>CEO &amp; Managing Director</small></span>
+      </a>
+      <a class="home-team-person" href="team.html">
+        <img src="assets/images/team/tanmoy-dev.webp" alt="" width="80" height="80" loading="lazy" decoding="async">
+        <span><strong>Tanmoy Dev</strong><small>GIS &amp; Remote Sensing</small></span>
+      </a>
+      <a class="home-team-person" href="team.html">
+        <img src="assets/images/team/kallyani-chakma.webp" alt="" width="80" height="80" loading="lazy" decoding="async">
+        <span><strong>Kallyani Chakma</strong><small>Research &amp; Development</small></span>
+      </a>
+    </div>
+    <p class="home-team-end"><a class="text-link" href="team.html">Meet the full team</a></p>
   </div>
 </section>
 
-<section class="section" aria-labelledby="insights-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="insights-title">Insights</h2>
-      <p class="section-head__deck">Explainers on the methods and policy questions behind our work.</p>
-    </div>
-    <div class="insight-grid"><article class="card-article" data-cats="environmental-research gis">
-  <div class="card-article__media"><img src="assets/images/landscape-classified-sm.webp" width="900" height="600" alt="" loading="lazy" decoding="async"></div>
-  <div class="card-article__meta"><span class="cat">Environmental Research</span><time datetime="2026-11-02">2 November 2026</time></div>
-  <h3><a href="insights/forest-fragmentation-landscape-connectivity.html">Forest fragmentation and the importance of landscape connectivity</a></h3>
-  <p>Forest loss is only part of the story. How the remaining forest is arranged, and whether patches stay connected, shapes what a landscape can still support.</p>
-</article><article class="card-article" data-cats="gis planning">
-  <div class="card-article__media"><img src="assets/images/landscape-ndvi-sm.webp" width="900" height="600" alt="" loading="lazy" decoding="async"></div>
-  <div class="card-article__meta"><span class="cat">GIS &amp; Remote Sensing</span><time datetime="2026-10-26">26 October 2026</time></div>
-  <h3><a href="insights/gis-remote-sensing-evidence-based-planning.html">How GIS and remote sensing support evidence-based planning</a></h3>
-  <p>Free, regularly updated satellite data has changed what a planning study can measure. The value lies in consistent methods, honest accuracy reporting and clear communication.</p>
-</article><article class="card-article" data-cats="climate policy">
-  <div class="card-article__media"><img src="assets/images/plate-delta-sm.webp" width="900" height="600" alt="" loading="lazy" decoding="async"></div>
-  <div class="card-article__meta"><span class="cat">Climate Change</span><time datetime="2026-10-19">19 October 2026</time></div>
-  <h3><a href="insights/climate-adaptation-resilience-bangladesh.html">Climate adaptation and resilience in Bangladesh</a></h3>
-  <p>Bangladesh has one of the most developed adaptation policy frameworks of any climate-vulnerable country. Turning plans into local results depends on good spatial evidence.</p>
-</article></div>
-    <p class="mt-5"><a class="text-link" href="insights.html">All insights</a></p>
-  </div>
-</section>
-
-
-<section class="section sp-quality-section" aria-labelledby="sp-quality-title">
-  <div class="wrap sp-quality-layout">
-    <div><span class="sp-eyebrow">DELIVERY WITH CLARITY</span><h2 id="sp-quality-title">A useful result is more than a finished report.</h2><p>Clear documentation, reviewed data and practical handover matter as much as an attractive final deliverable.</p><a class="text-link" href="capabilities.html#delivery">How we scope &amp; deliver assignments</a></div>
-    <div class="sp-quality-list">
-      <div><span>01</span><div><h3>Traceable methods</h3><p>Document sources, assumptions and limitations.</p></div></div>
-      <div><span>02</span><div><h3>Reviewable evidence</h3><p>Check data and discuss interim findings.</p></div></div>
-      <div><span>03</span><div><h3>Usable handover</h3><p>Agree formats, documentation and next steps.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section bg-sage" aria-labelledby="cta-title">
+<section class="section bg-sage home-cta" aria-labelledby="cta-title">
   <div class="wrap cta-band">
-    <h2 id="cta-title">Let's turn complex challenges into practical solutions.</h2>
+    <h2 id="cta-title">Let's turn your next challenge into a clear plan.</h2>
     <div class="cta-band__side">
-      <p>Tell us about your project, study or idea. We will reply with questions, a proposed approach, or an honest view on whether we are the right team.</p>
-      <a class="btn btn--primary" href="contact.html">Start a conversation</a>
-      <ul class="contact-lines">
-        <li><svg aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-mail"></use></svg><a href="mailto:info@spedar.com" data-config="email">info@spedar.com</a></li>
-        <li><svg aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-phone"></use></svg><a href="tel:+8801749626470" data-config="phone">+880 1749 626470</a></li>
-      </ul>
+      <p>Tell us about your study, design brief or project idea. We will discuss the scope, information needed and a suitable approach.</p>
+      <a class="btn btn--primary" href="contact.html">Discuss your project</a>
+      <p class="home-cta__extra"><a class="text-link" href="project-brief.html">Or prepare a project brief</a></p>
     </div>
   </div>
 </section>

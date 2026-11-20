@@ -41,7 +41,7 @@
   }
 
 
-  /* ---- About Us: four dedicated organization pages ----
+  /* ---- About Us: five dedicated organization pages ----
      Replace only the existing About link; leave existing Services menu,
      responsive navigation and all other links intact. */
   function initAboutMenu() {
@@ -54,12 +54,13 @@
     var href = aboutLink.getAttribute('href');
     var prefix = href.substring(0, href.lastIndexOf('about.html'));
     var currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    var aboutPages = ['about.html', 'board-of-advisors.html', 'mission-vision.html', 'partners.html'];
+    var aboutPages = ['about.html', 'board-of-advisors.html', 'mission-vision.html', 'quality-policy.html', 'partners.html'];
     var selected = aboutPages.indexOf(currentPath) >= 0 || aboutLink.getAttribute('aria-current') === 'page';
     var options = [
       ['about.html', 'The Organization'],
       ['board-of-advisors.html', 'Board of Advisors'],
       ['mission-vision.html', 'Mission &amp; Vision'],
+      ['quality-policy.html', 'Quality Policy'],
       ['partners.html', 'Our Partners']
     ];
     var toggle = document.createElement('button');

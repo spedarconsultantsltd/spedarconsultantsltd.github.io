@@ -83,6 +83,46 @@
     li.appendChild(dropdown);
   }
 
+
+  /* ---- Careers link in the main header across all pages ----
+     Insert before Contact, using the same relative path as the existing
+     header links. This leaves the About and Services dropdowns intact.
+     The footer Careers link remains managed by initCareersFooterLink(). */
+  function initCareersHeaderLink() {
+    var nav = document.getElementById('site-nav');
+    if (!nav) return;
+    var list = nav.querySelector('.nav__list');
+    if (!list) return;
+    var existing = $all('a.nav__link', list).some(function (link) {
+      return /(^|\/)careers\.html(?:[#?].*)?$/.test(link.getAttribute('href') || '');
+    });
+    if (existing) return;
+
+    var contact = list.querySelector('li.nav__cta a[href$="contact.html"]') || list.querySelector('li.nav__cta a');
+    var team = list.querySelector('a.nav__link[href$="team.html"]');
+    var insights = list.querySelector('a.nav__link[href$="insights.html"]');
+    var reference = contact || team || insights;
+    var refHref = reference ? reference.getAttribute('href') : 'contact.html';
+    var folder = refHref.indexOf('/') >= 0 ? refHref.slice(0, refHref.lastIndexOf('/') + 1) : '';
+
+    var item = document.createElement('li');
+    item.className = 'nav__careers';
+    var link = document.createElement('a');
+    link.className = 'nav__link';
+    link.href = folder + 'careers.html';
+    link.textContent = 'Careers';
+    if ((window.location.pathname.split('/').pop() || '').toLowerCase() === 'careers.html') {
+      link.setAttribute('aria-current', 'page');
+    }
+    item.appendChild(link);
+    var contactItem = contact && contact.closest('li');
+    if (contactItem && contactItem.parentElement === list) {
+      list.insertBefore(item, contactItem);
+    } else {
+      list.appendChild(item);
+    }
+  }
+
   /* ---- 3. Navigation: mobile menu + services dropdown ---- */
   function initNav() {
     var btn = $(".menu-btn");
@@ -294,6 +334,6 @@
     });
   }
 
-  function init() { applyConfig(); initHeader(); initAboutMenu(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
+  function init() { applyConfig(); initHeader(); initAboutMenu(); initCareersHeaderLink(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

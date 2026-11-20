@@ -712,3 +712,15 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
   #about-menu.dropdown a{padding:.85rem 1.15rem}
   #about-menu.dropdown a strong{font-size:1rem}
 }
+
+/* Careers header navigation: compact desktop spacing when the extra item
+   approaches the responsive breakpoint. Existing mobile menu is unchanged. */
+@media (min-width: 1081px) and (max-width: 1310px) {
+  .header-inner { gap: .45rem; }
+  .nav__list > li > .nav__link,
+  .nav__list > li > .nav__toggle { padding-left: .43rem; padding-right: .43rem; font-size: .89rem; }
+  .nav__cta { margin-left: .25rem; }
+  .brand img.brand__wordmark { width: 148px; }
+  .brand img.brand__mark { width: 40px; height: 40px; }
+  .brand { gap: .45rem; }
+}

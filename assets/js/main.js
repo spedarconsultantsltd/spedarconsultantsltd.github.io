@@ -227,6 +227,30 @@
     });
   }
 
-  function init() { applyConfig(); initHeader(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); }
+
+  /* ---- 10. Careers page link, in existing Company footer navigation ----
+     Adding it here avoids rewriting every HTML page in the repository. */
+  function initCareersFooterLink() {
+    $all('.site-footer .footer-col').forEach(function (column) {
+      var heading = column.querySelector('h2');
+      if (!heading || heading.textContent.trim().toLowerCase() !== 'company') return;
+      var list = column.querySelector('ul');
+      if (!list || list.querySelector('a[href$="careers.html"]')) return;
+      var teamLink = list.querySelector('a[href$="team.html"]');
+      var path = teamLink ? teamLink.getAttribute('href').replace(/team\.html$/, 'careers.html') : 'careers.html';
+      var item = document.createElement('li');
+      var link = document.createElement('a');
+      link.href = path;
+      link.textContent = 'Careers';
+      item.appendChild(link);
+      if (teamLink && teamLink.parentElement && teamLink.parentElement.parentElement === list) {
+        teamLink.parentElement.insertAdjacentElement('afterend', item);
+      } else {
+        list.appendChild(item);
+      }
+    });
+  }
+
+  function init() { applyConfig(); initHeader(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

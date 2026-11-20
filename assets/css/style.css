@@ -703,10 +703,8 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
 #about-menu.dropdown a strong{display:block;font-family:var(--sans);font-size:.94rem;font-weight:500}
 #about-menu.dropdown a:hover,#about-menu.dropdown a:focus-visible{background:var(--sage);color:var(--forest)}
 #about-menu.dropdown a[aria-current="page"]{color:var(--teal-ink);background:rgba(22,122,112,.09)}
-@media (hover:hover) and (min-width:1081px){
-  .nav__list>li:hover>#about-menu.dropdown,
-  .nav__list>li:focus-within>#about-menu.dropdown{opacity:1;visibility:visible;transform:none}
-}
+/* About Us opens only through its button's click / keyboard activation.
+   Deliberately no parent :hover / :focus-within auto-open rule. */
 @media (max-width:1080px){
   #about-menu.dropdown{width:100%;padding:.15rem 0 .8rem;left:auto;background:transparent;border:0;box-shadow:none}
   #about-menu.dropdown a{padding:.85rem 1.15rem}
@@ -775,21 +773,53 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
   align-items: center;
   justify-content: space-between;
 }
-.sp-resources__toggle span { font-size: 1.05rem; transition: transform .2s ease; }
-.sp-resources.is-open .sp-resources__toggle span { transform: rotate(180deg); }
+/* Desktop: Resources opens as a separate elegant side panel, never a
+   downward extension of the main dropdown. Mobile: nested vertical list. */
+.sp-resources { position: relative; }
+.sp-resources__toggle span.sp-resources__chevron {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+  display: inline-block;
+  transition: transform .2s ease;
+}
+.sp-resources.is-open > .sp-resources__toggle {
+  background: var(--sage);
+  color: var(--forest);
+}
 .sp-resources__list {
+  position: absolute;
+  top: -.45rem;
+  left: calc(100% + .6rem);
+  right: auto;
+  z-index: 115;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2px;
-  margin: .05rem .35rem .5rem .8rem;
-  padding-left: .65rem;
-  border-left: 2px solid var(--teal);
+  grid-template-columns: minmax(0, 1fr);
+  gap: .2rem;
+  width: 290px;
+  max-width: calc(100vw - 32px);
+  padding: .55rem;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--teal);
+  border-radius: 5px;
+  background: var(--white);
+  box-shadow: 0 18px 40px -18px rgba(16,63,57,.35);
+  max-height: min(65vh, 420px);
+  overflow-y: auto;
+}
+.sp-resources--open-left > .sp-resources__list {
+  right: calc(100% + .6rem);
+  left: auto;
+}
+.sp-resources--open-left > .sp-resources__toggle span.sp-resources__chevron {
+  transform: rotate(180deg);
 }
 .sp-resources__list[hidden] { display: none !important; }
 .sp-resources__list .sp-menu-link { font-size: .87rem; padding: .7rem .85rem; }
+/* About Us and Capacity Building open only on click. Insights keeps the
+   existing hover interaction; its click/keyboard toggle also works. */
 @media (hover:hover) and (min-width:1081px) {
-  .nav__list > li:hover > #capacity-menu.sp-nav-dropdown,
-  .nav__list > li:focus-within > #capacity-menu.sp-nav-dropdown,
   .nav__list > li:hover > #insights-menu.sp-nav-dropdown,
   .nav__list > li:focus-within > #insights-menu.sp-nav-dropdown {
     opacity: 1;
@@ -810,7 +840,23 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
   }
   .sp-nav-dropdown .sp-menu-link,
   .sp-nav-dropdown .sp-resources__toggle { padding: .88rem 1.1rem; font-size: 1rem; }
+  .sp-resources__list {
+    position: static;
+    width: auto;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    margin: .2rem .35rem .5rem 1rem;
+    padding: .1rem 0 .1rem .65rem;
+    border: 0;
+    border-left: 2px solid var(--teal);
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
   .sp-resources__list .sp-menu-link { padding: .75rem .85rem; font-size: .94rem; }
+  .sp-resources__toggle span.sp-resources__chevron { transform: rotate(90deg); }
+  .sp-resources.is-open .sp-resources__toggle span.sp-resources__chevron { transform: rotate(-90deg); }
 }
 /* Small-desktop navigation: make room for Capacity Building without crowding the logo */
 @media (min-width:1081px) and (max-width:1390px) {
@@ -836,3 +882,10 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
 .sp-feature-note p { margin: 0; }
 @media (max-width:900px) { .sp-feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width:590px) { .sp-feature-grid { grid-template-columns: 1fr; } .sp-feature-card { padding: 1.4rem; } }
+
+/* Flyout polish: long equipment titles wrap cleanly, keyboard navigation clear. */
+@media (min-width:1081px) {
+  .sp-resources__list .sp-menu-link { font-size: .92rem; line-height: 1.45; padding: .72rem .85rem; }
+  .sp-resources__list .sp-menu-link:focus-visible,
+  .sp-resources__toggle:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; }
+}

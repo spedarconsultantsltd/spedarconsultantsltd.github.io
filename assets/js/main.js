@@ -152,7 +152,7 @@
     resBtn.className = "sp-resources__toggle";
     resBtn.setAttribute("aria-expanded", "false");
     resBtn.setAttribute("aria-controls", "sp-resources-list");
-    resBtn.innerHTML = 'Resources <span aria-hidden="true">⌄</span>';
+    resBtn.innerHTML = 'Resources <span class="sp-resources__chevron" aria-hidden="true">&#8250;</span>';
     var resList = document.createElement("div");
     resList.className = "sp-resources__list";
     resList.id = "sp-resources-list";
@@ -175,10 +175,22 @@
     insightLi.appendChild(insMenu);
     insightLi.classList.add("sp-nav-item", "sp-nav-item--insights");
 
+    function positionResourcesFlyout() {
+      res.classList.remove("sp-resources--open-left");
+      if (window.innerWidth <= 1080) return;
+      // Prefer the right-hand side as in the reference. If too close to the
+      // viewport edge, flip to the left instead of clipping the content.
+      var buttonRight = resBtn.getBoundingClientRect().right;
+      var popupWidth = Math.min(290, window.innerWidth - 32);
+      if (buttonRight + 12 + popupWidth > window.innerWidth - 16) {
+        res.classList.add("sp-resources--open-left");
+      }
+    }
     var resourcesOpen = function (open) {
       resBtn.setAttribute("aria-expanded", String(open));
       resList.hidden = !open;
       res.classList.toggle("is-open", open);
+      if (open) positionResourcesFlyout();
     };
     if (["publications.html","survey-equipment.html","software-tools.html"].indexOf(path) !== -1) {
       resourcesOpen(true);
@@ -193,8 +205,22 @@
     res.addEventListener("keydown", function (e) {
       if (e.key === "Escape") { resourcesOpen(false); resBtn.focus(); e.stopPropagation(); }
     });
-    // Resources opens on deliberate click or keyboard activation. This avoids
-    // the mouseenter+click double-toggle that can accidentally close it.
+    // When the whole Capacity menu is closed, its flyout also closes.
+    // Clicking the main menu again can reopen it with a clean state.
+    var capToggle = capLi.querySelector('.nav__toggle');
+    if (capToggle) {
+      capToggle.addEventListener("click", function () {
+        if (capToggle.getAttribute("aria-expanded") === "true") resourcesOpen(false);
+        else if (!resList.hidden) window.requestAnimationFrame(positionResourcesFlyout);
+      });
+    }
+    document.addEventListener("click", function (e) {
+      if (!capLi.contains(e.target) && !resList.hidden) resourcesOpen(false);
+    });
+    window.addEventListener("resize", function () {
+      if (!resList.hidden) positionResourcesFlyout();
+    });
+    // Resources only opens on click / keyboard activation, not mouseover.
 
   }
 

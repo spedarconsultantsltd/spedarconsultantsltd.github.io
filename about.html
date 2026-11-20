@@ -28,7 +28,7 @@
 <style id="about-page-refresh">
 /* SPEDAR About editorial refresh — scoped to this page only.
    All existing site-wide brand tokens, header and footer are retained. */
-.about-v2{overflow:hidden}
+.about-v2{overflow:clip}
 .about-v2 .abt-wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .about-v2 .abt-eyebrow{font:600 .72rem/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal-ink);margin:0 0 1.2rem}
 .about-v2 .abt-eyebrow--light{color:#ddc58d}
@@ -137,14 +137,8 @@
 .about-v2 .abt-snapshot-card::before{content:'';position:absolute;inset:0;background:linear-gradient(115deg,var(--forest),var(--teal));z-index:-1;transform:scaleX(0);transform-origin:left center;transition:transform .54s cubic-bezier(.18,.75,.2,1)}
 .about-v2 .abt-snapshot-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 10px 28px rgba(16,63,57,.08)}
 .about-v2 .abt-snapshot-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.about-v2 .abt-snapshot-card[aria-pressed="true"]{border-color:var(--forest);color:var(--white);box-shadow:0 11px 30px rgba(16,63,57,.13)}
-.about-v2 .abt-snapshot-card[aria-pressed="true"]::before{transform:scaleX(1)}
 .about-v2 .abt-snapshot-value{font:600 clamp(1.45rem,2.2vw,2.1rem)/1.15 var(--sans);letter-spacing:-.035em;margin-bottom:.6rem;max-width:100%;overflow-wrap:anywhere}
 .about-v2 .abt-snapshot-label{font:400 .94rem/1.5 var(--sans);color:var(--ink-soft)}
-.about-v2 .abt-snapshot-cue{margin-top:auto;padding-top:1.3rem;color:var(--teal-ink);font-size:.76rem;font-weight:600;display:flex;gap:.55rem;align-items:center}
-.about-v2 .abt-snapshot-cue span{font-size:1rem}
-.about-v2 .abt-snapshot-card[aria-pressed="true"] .abt-snapshot-label,.about-v2 .abt-snapshot-card[aria-pressed="true"] .abt-snapshot-cue{color:rgba(255,255,255,.9)}
-.about-v2 .abt-snapshot-detail{border-left:3px solid var(--gold);padding:0 0 0 1rem;margin:1.25rem 0 0;font-size:.89rem;color:var(--ink-soft);line-height:1.65;min-height:1.65em;max-width:90ch}
 .about-v2 .abt-purpose-grid--balanced{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}
 .about-v2 .abt-purpose-item--mission p{font-size:clamp(1.18rem,1.5vw,1.45rem)}
 .about-v2 .abt-purpose-item--vision p{font-size:clamp(1.22rem,1.62vw,1.55rem)}
@@ -155,8 +149,68 @@
 .about-v2 .abt-client-card p{font-size:.91rem;line-height:1.7;color:var(--ink-soft);margin:0}
 .about-v2 .abt-client-note{font-size:.76rem;color:var(--ink-soft);margin:1.15rem 0 0;line-height:1.55}
 @media(max-width:900px){.about-v2 .abt-snapshot-grid,.about-v2 .abt-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-v2 .abt-snapshot-head{align-items:flex-start;flex-direction:column}.about-v2 .abt-purpose-grid--balanced{grid-template-columns:1fr}.about-v2 .abt-client-card:last-child{grid-column:1/-1}}
-@media(max-width:600px){.about-v2 .abt-hero-actions{align-items:flex-start;gap:1.3rem}.about-v2 .abt-snapshot-grid,.about-v2 .abt-client-grid{grid-template-columns:1fr}.about-v2 .abt-snapshot-card{min-height:150px;padding:1.35rem}.about-v2 .abt-snapshot-cue{padding-top:.65rem}.about-v2 .abt-client-card{min-height:0}.about-v2 .abt-client-card:last-child{grid-column:auto}.about-v2 .abt-snapshot-head h2{font-size:2rem}}
 @media(prefers-reduced-motion:reduce){.about-v2 .abt-snapshot-card,.about-v2 .abt-snapshot-card::before{transition:none}.about-v2 .abt-snapshot-card:hover{transform:none}}
+
+/* === About Us refinements: compact non-interactive company facts === */
+.about-v2 .abt-snapshot{padding-block:clamp(2.75rem,4.25vw,4rem)}
+.about-v2 .abt-snapshot-grid{gap:clamp(.75rem,1.3vw,1.25rem)}
+.about-v2 .abt-snapshot-card{
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  min-height:124px; padding:1.1rem clamp(1.2rem,1.7vw,1.65rem);
+  border:1px solid var(--line); border-radius:10px;
+  background:var(--paper); color:var(--forest); cursor:default;
+  transform:none; box-shadow:none;
+  transition:border-color .26s ease, box-shadow .26s ease, color .26s ease;
+}
+.about-v2 .abt-snapshot-card::before{
+  background:linear-gradient(110deg,var(--forest),var(--teal));
+  transform:scaleX(0); transform-origin:left center;
+  transition:transform .36s cubic-bezier(.2,.7,.22,1);
+}
+.about-v2 .abt-snapshot-card:hover{border-color:var(--forest);color:var(--white);transform:none;box-shadow:0 8px 18px rgba(16,63,57,.09)}
+.about-v2 .abt-snapshot-card:hover::before{transform:scaleX(1)}
+.about-v2 .abt-snapshot-value{font-size:clamp(1.45rem,1.8vw,1.9rem);line-height:1.2;margin:0 0 .36rem}
+.about-v2 .abt-snapshot-label{font-size:clamp(.84rem,.9vw,.96rem);line-height:1.42}
+.about-v2 .abt-snapshot-card:hover .abt-snapshot-label{color:rgba(255,255,255,.94)}
+/* === Sticky editorial headings stay visible alongside long body copy.
+   No JS, extra scrolling, or sticky floating elements on narrow screens. === */
+@media (min-width:901px) and (min-height:620px){
+  .about-v2 .abt-story-grid, .about-v2 .abt-delivery-grid{align-items:start}
+  .about-v2 .abt-story-grid > :first-child,
+  .about-v2 .abt-delivery-grid > .abt-delivery-head{
+    position:sticky; top:calc(var(--header-h,76px) + 1.4rem); align-self:start;
+  }
+  /* For the sections whose cards are beneath the intro row, keep their heading
+     readable while those cards scroll through the viewport. */
+  .about-v2 #our-expertise .abt-heading-row,
+  .about-v2 #quality .abt-heading-row,
+  .about-v2 #our-clients .abt-heading-row{
+    position:sticky; top:calc(var(--header-h,76px) + .45rem);
+    z-index:4; padding:.6rem 0 .85rem;
+    border-bottom:1px solid rgba(16,63,57,.09);
+    margin-bottom:1.45rem;
+  }
+  .about-v2 #our-expertise .abt-heading-row,
+  .about-v2 #quality .abt-heading-row{background:var(--white)}
+  .about-v2 #our-clients .abt-heading-row{background:var(--paper)}
+}
+@media (max-width:900px), (max-height:619px){
+  .about-v2 .abt-story-grid > :first-child,
+  .about-v2 .abt-delivery-grid > .abt-delivery-head,
+  .about-v2 #our-expertise .abt-heading-row,
+  .about-v2 #quality .abt-heading-row,
+  .about-v2 #our-clients .abt-heading-row{position:static}
+}
+@media (max-width:900px) and (min-width:601px){
+  .about-v2 .abt-snapshot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:600px){
+  .about-v2 .abt-snapshot-grid{grid-template-columns:1fr;gap:.6rem}
+  .about-v2 .abt-snapshot-card{min-height:100px;padding:1rem 1.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .about-v2 .abt-snapshot-card,.about-v2 .abt-snapshot-card::before{transition:none}
+}
 </style>
 </head>
 <body>
@@ -206,26 +260,22 @@
     <div class="abt-wrap">
       <div class="abt-snapshot-head">
         <div><p class="abt-eyebrow">Company profile</p><h2 id="snapshot-title">SPEDAR at a glance</h2></div>
-        <p>Explore the foundations of our consultancy practice.</p>
+        <p>The foundations of our consultancy practice.</p>
       </div>
-      <div class="abt-snapshot-grid" role="group" aria-label="Company profile facts">
-        <button class="abt-snapshot-card" type="button" aria-pressed="false" data-detail="Founded on 4 October 2025 in Bangladesh, SPEDAR brings together complementary professional disciplines to address practical project challenges.">
+      <div class="abt-snapshot-grid" aria-label="Company profile facts">
+        <div class="abt-snapshot-card">
           <span class="abt-snapshot-value">2025</span>
           <span class="abt-snapshot-label">Founded on 4 October</span>
-          <span class="abt-snapshot-cue" aria-hidden="true">Explore <span>↗</span></span>
-        </button>
-        <button class="abt-snapshot-card" type="button" aria-pressed="false" data-detail="Our model connects planning, engineering, environmental and social assessment, GIS, fieldwork and technology through specialised practice areas.">
+        </div>
+        <div class="abt-snapshot-card">
           <span class="abt-snapshot-value">Integrated</span>
           <span class="abt-snapshot-label">Multidisciplinary practices</span>
-          <span class="abt-snapshot-cue" aria-hidden="true">Explore <span>↗</span></span>
-        </button>
-        <button class="abt-snapshot-card" type="button" aria-pressed="false" data-detail="We structure assignments from feasibility, planning and technical design through coordination, implementation support and reporting, according to project needs.">
+        </div>
+        <div class="abt-snapshot-card">
           <span class="abt-snapshot-value">End-to-end</span>
           <span class="abt-snapshot-label">Project-focused approach</span>
-          <span class="abt-snapshot-cue" aria-hidden="true">Explore <span>↗</span></span>
-        </button>
+        </div>
       </div>
-      <p class="abt-snapshot-detail" id="abt-snapshot-detail" aria-live="polite">Select a card to explore our company profile.</p>
     </div>
   </section>
 
@@ -365,24 +415,5 @@
   </div>
 </footer>
 
-<script>
-(function(){
-  'use strict';
-  function initSnapshot(){
-    var cards=document.querySelectorAll('.about-v2 .abt-snapshot-card');
-    var detail=document.getElementById('abt-snapshot-detail');
-    if(!detail||!cards.length)return;
-    cards.forEach(function(card){
-      card.addEventListener('click',function(){
-        var select=card.getAttribute('aria-pressed')!=='true';
-        cards.forEach(function(other){other.setAttribute('aria-pressed','false');});
-        card.setAttribute('aria-pressed',select?'true':'false');
-        detail.textContent=select?card.getAttribute('data-detail'):'Select a card to explore our company profile.';
-      });
-    });
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initSnapshot);}else{initSnapshot();}
-})();
-</script>
 </body>
 </html>

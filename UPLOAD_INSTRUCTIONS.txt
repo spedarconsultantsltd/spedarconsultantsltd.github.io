@@ -1,0 +1,25 @@
+SPEDAR CONSULTANTS LTD. - Our Team page update
+
+Files in this package:
+1. team.html
+2. assets/images/team/advocate-md-robiul.webp
+3. assets/images/team/al-amin.webp
+4. assets/images/team/farhana-mustarin.webp
+5. assets/images/team/mahir-alam-utsho.webp
+6. assets/images/team/md-abdul-malek.webp
+7. assets/images/team/md-shahria.webp
+8. assets/images/team/md-shohedozzaman-basunia.webp
+9. assets/images/team/shabbir-ahmad-shabbir.webp
+
+Upload steps:
+1. Download and extract this ZIP on your computer.
+2. Open your GitHub repository: spedarconsultantsltd.github.io.
+3. Upload/replace team.html in the repository root.
+4. Upload the eight .webp files into the existing assets/images/team/ folder. Keep the folder path and filenames exactly as provided.
+5. Commit the changes to the main branch.
+6. Wait for GitHub Pages to deploy, then open https://spedarconsultantsltd.github.io/team.html and hard-refresh the page.
+
+Important:
+- Do not upload the ZIP itself expecting GitHub to extract it.
+- Do not delete the existing team portrait files; the updated page still uses them for the original team members.
+- No CSS or JavaScript changes are required. The page uses the site's existing stylesheet and scripts.

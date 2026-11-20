@@ -85,43 +85,117 @@
   }
 
 
-  /* ---- Careers link in the main header across all pages ----
-     Insert before Contact, using the same relative path as the existing
-     header links. This leaves the About and Services dropdowns intact.
-     The footer Careers link remains managed by initCareersFooterLink(). */
-  function initCareersHeaderLink() {
-    var nav = document.getElementById('site-nav');
-    if (!nav) return;
-    var list = nav.querySelector('.nav__list');
+  /* ---- Capacity Building + Insights grouped menus ----
+     Existing About/Services dropdowns and all page content remain unchanged.
+     This is inserted progressively into each existing header. */
+  function initCapacityInsightsMenus() {
+    var nav = document.getElementById("site-nav");
+    if (!nav || document.getElementById("capacity-menu")) return;
+    var list = nav.querySelector(".nav__list");
     if (!list) return;
-    var existing = $all('a.nav__link', list).some(function (link) {
-      return /(^|\/)careers\.html(?:[#?].*)?$/.test(link.getAttribute('href') || '');
+    var mainLinks = $all(":scope > li > a.nav__link", list);
+    var insights = mainLinks.find(function (a) { return /(^|\/)insights\.html(?:[#?].*)?$/.test(a.getAttribute("href") || ""); });
+    if (!insights) return;
+    var insightLi = insights.parentElement;
+    var oldHref = insights.getAttribute("href") || "insights.html";
+    var prefix = oldHref.slice(0, oldHref.lastIndexOf("insights.html"));
+    var path = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+    var capPages = ["capacity-building.html","training.html","workshops.html","seminars-webinars.html","careers.html","publications.html","survey-equipment.html","software-tools.html"];
+    var insightPages = ["insights.html","news.html","content.html","events.html"];
+
+    // Remove the former stand-alone Careers main menu item, if hard-coded.
+    $all(":scope > li", list).forEach(function (li) {
+      if (li === insightLi) return;
+      var a = li.querySelector(":scope > a.nav__link");
+      if (a && /(^|\/)careers\.html(?:[#?].*)?$/.test(a.getAttribute("href") || "")) li.remove();
     });
-    if (existing) return;
 
-    var contact = list.querySelector('li.nav__cta a[href$="contact.html"]') || list.querySelector('li.nav__cta a');
-    var team = list.querySelector('a.nav__link[href$="team.html"]');
-    var insights = list.querySelector('a.nav__link[href$="insights.html"]');
-    var reference = contact || team || insights;
-    var refHref = reference ? reference.getAttribute('href') : 'contact.html';
-    var folder = refHref.indexOf('/') >= 0 ? refHref.slice(0, refHref.lastIndexOf('/') + 1) : '';
+    function makeLink(file, label, cls) {
+      var a = document.createElement("a");
+      a.href = prefix + file;
+      a.className = cls || "sp-menu-link";
+      a.textContent = label;
+      if (file === path) a.setAttribute("aria-current", "page");
+      return a;
+    }
+    function makeToggle(label, id, active) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "nav__toggle" + (active ? " is-current" : "");
+      b.setAttribute("aria-expanded", "false");
+      b.setAttribute("aria-controls", id);
+      b.innerHTML = label + ' <svg aria-hidden="true" focusable="false"><use href="' + prefix + 'assets/icons/icons.svg#i-chevron"></use></svg>';
+      return b;
+    }
+    function makeMenu(id, label) {
+      var d = document.createElement("div");
+      d.className = "dropdown sp-nav-dropdown";
+      d.id = id;
+      d.setAttribute("aria-label", label);
+      return d;
+    }
 
-    var item = document.createElement('li');
-    item.className = 'nav__careers';
-    var link = document.createElement('a');
-    link.className = 'nav__link';
-    link.href = folder + 'careers.html';
-    link.textContent = 'Careers';
-    if ((window.location.pathname.split('/').pop() || '').toLowerCase() === 'careers.html') {
-      link.setAttribute('aria-current', 'page');
+    var capLi = document.createElement("li");
+    capLi.className = "sp-nav-item sp-nav-item--capacity";
+    capLi.appendChild(makeToggle("Capacity Building", "capacity-menu", capPages.indexOf(path) !== -1));
+    var capMenu = makeMenu("capacity-menu", "Capacity Building pages");
+    capMenu.appendChild(makeLink("capacity-building.html", "Overview", "sp-menu-link sp-menu-link--overview"));
+    capMenu.appendChild(makeLink("training.html", "Training"));
+    capMenu.appendChild(makeLink("workshops.html", "Workshops"));
+    capMenu.appendChild(makeLink("seminars-webinars.html", "Seminars & Webinars"));
+    capMenu.appendChild(makeLink("careers.html", "Careers"));
+
+    var res = document.createElement("div");
+    res.className = "sp-resources";
+    var resBtn = document.createElement("button");
+    resBtn.type = "button";
+    resBtn.className = "sp-resources__toggle";
+    resBtn.setAttribute("aria-expanded", "false");
+    resBtn.setAttribute("aria-controls", "sp-resources-list");
+    resBtn.innerHTML = 'Resources <span aria-hidden="true">⌄</span>';
+    var resList = document.createElement("div");
+    resList.className = "sp-resources__list";
+    resList.id = "sp-resources-list";
+    resList.hidden = true;
+    resList.appendChild(makeLink("publications.html", "Publications"));
+    resList.appendChild(makeLink("survey-equipment.html", "High-Precision DGPS & Survey Equipment"));
+    resList.appendChild(makeLink("software-tools.html", "Software, Tools & Techniques"));
+    res.appendChild(resBtn);
+    res.appendChild(resList);
+    capMenu.appendChild(res);
+    capLi.appendChild(capMenu);
+    list.insertBefore(capLi, insightLi);
+
+    var insToggle = makeToggle("Insights", "insights-menu", insightPages.indexOf(path) !== -1);
+    var insMenu = makeMenu("insights-menu", "Insights pages");
+    insMenu.appendChild(makeLink("news.html", "News"));
+    insMenu.appendChild(makeLink("content.html", "Content"));
+    insMenu.appendChild(makeLink("events.html", "Events"));
+    insightLi.replaceChild(insToggle, insights);
+    insightLi.appendChild(insMenu);
+    insightLi.classList.add("sp-nav-item", "sp-nav-item--insights");
+
+    var resourcesOpen = function (open) {
+      resBtn.setAttribute("aria-expanded", String(open));
+      resList.hidden = !open;
+      res.classList.toggle("is-open", open);
+    };
+    if (["publications.html","survey-equipment.html","software-tools.html"].indexOf(path) !== -1) {
+      resourcesOpen(true);
     }
-    item.appendChild(link);
-    var contactItem = contact && contact.closest('li');
-    if (contactItem && contactItem.parentElement === list) {
-      list.insertBefore(item, contactItem);
-    } else {
-      list.appendChild(item);
-    }
+    resBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      resourcesOpen(resBtn.getAttribute("aria-expanded") !== "true");
+    });
+    resBtn.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { resourcesOpen(false); resBtn.focus(); }
+    });
+    res.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { resourcesOpen(false); resBtn.focus(); e.stopPropagation(); }
+    });
+    // Resources opens on deliberate click or keyboard activation. This avoids
+    // the mouseenter+click double-toggle that can accidentally close it.
+
   }
 
   /* ---- 3. Navigation: mobile menu + services dropdown ---- */
@@ -335,6 +409,6 @@
     });
   }
 
-  function init() { applyConfig(); initHeader(); initAboutMenu(); initCareersHeaderLink(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
+  function init() { applyConfig(); initHeader(); initAboutMenu(); initCapacityInsightsMenus(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

@@ -694,3 +694,21 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
   .brand img.brand__mark { width: 36px; height: 36px; }
   .brand img.brand__wordmark { width: 143px; max-height: 44px; }
 }
+
+
+/* About Us dropdown — 2026-11-21: progressive enhancement on every page.
+   Intentional visual match to existing brand; Services dropdown is unchanged. */
+#about-menu.dropdown{width:min(325px,90vw);grid-template-columns:minmax(0,1fr);gap:.15rem;padding:.55rem;left:-.5rem}
+#about-menu.dropdown a{display:block;padding:.85rem 1rem;line-height:1.35;color:var(--ink)}
+#about-menu.dropdown a strong{display:block;font-family:var(--sans);font-size:.94rem;font-weight:500}
+#about-menu.dropdown a:hover,#about-menu.dropdown a:focus-visible{background:var(--sage);color:var(--forest)}
+#about-menu.dropdown a[aria-current="page"]{color:var(--teal-ink);background:rgba(22,122,112,.09)}
+@media (hover:hover) and (min-width:1081px){
+  .nav__list>li:hover>#about-menu.dropdown,
+  .nav__list>li:focus-within>#about-menu.dropdown{opacity:1;visibility:visible;transform:none}
+}
+@media (max-width:1080px){
+  #about-menu.dropdown{width:100%;padding:.15rem 0 .8rem;left:auto;background:transparent;border:0;box-shadow:none}
+  #about-menu.dropdown a{padding:.85rem 1.15rem}
+  #about-menu.dropdown a strong{font-size:1rem}
+}

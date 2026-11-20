@@ -40,6 +40,49 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+
+  /* ---- About Us: four dedicated organization pages ----
+     Replace only the existing About link; leave existing Services menu,
+     responsive navigation and all other links intact. */
+  function initAboutMenu() {
+    var nav = document.getElementById('site-nav');
+    if (!nav || document.getElementById('about-menu')) return;
+    var links = $all('.nav__list > li > a.nav__link', nav);
+    var aboutLink = links.find(function (a) { return /(^|\/)about\.html(?:#.*)?$/.test(a.getAttribute('href') || ''); });
+    if (!aboutLink) return;
+    var li = aboutLink.parentElement;
+    var href = aboutLink.getAttribute('href');
+    var prefix = href.substring(0, href.lastIndexOf('about.html'));
+    var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    var aboutPages = ['about.html', 'board-of-advisors.html', 'mission-vision.html', 'partners.html'];
+    var selected = aboutPages.indexOf(currentPath) >= 0 || aboutLink.getAttribute('aria-current') === 'page';
+    var options = [
+      ['about.html', 'The Organization'],
+      ['board-of-advisors.html', 'Board of Advisors'],
+      ['mission-vision.html', 'Mission &amp; Vision'],
+      ['partners.html', 'Our Partners']
+    ];
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'nav__toggle' + (selected ? ' is-current' : '');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-controls','about-menu');
+    toggle.innerHTML = 'About Us <svg aria-hidden="true" focusable="false"><use href="' + prefix + 'assets/icons/icons.svg#i-chevron"></use></svg>';
+    var dropdown = document.createElement('div');
+    dropdown.className = 'dropdown';
+    dropdown.id = 'about-menu';
+    dropdown.setAttribute('aria-label','About Us pages');
+    options.forEach(function (item) {
+      var a = document.createElement('a');
+      a.href = prefix + item[0];
+      if (currentPath === item[0]) a.setAttribute('aria-current','page');
+      a.innerHTML = '<strong>' + item[1] + '</strong>';
+      dropdown.appendChild(a);
+    });
+    li.replaceChild(toggle, aboutLink);
+    li.appendChild(dropdown);
+  }
+
   /* ---- 3. Navigation: mobile menu + services dropdown ---- */
   function initNav() {
     var btn = $(".menu-btn");
@@ -251,6 +294,6 @@
     });
   }
 
-  function init() { applyConfig(); initHeader(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
+  function init() { applyConfig(); initHeader(); initAboutMenu(); initNav(); initMapLayers(); initReveal(); initSubnav(); initFilters(); initContactForm(); initCopy(); initCareersFooterLink(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

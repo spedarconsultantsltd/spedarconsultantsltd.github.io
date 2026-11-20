@@ -268,6 +268,39 @@
         if (window.innerWidth > 1080 && !menu.contains(e.relatedTarget) && e.relatedTarget !== toggle) close();
       });
     });
+
+    /* Services: clicking opens the existing menu, but leaving its entire
+       button/dropdown area with the mouse automatically closes it. This does
+       NOT affect the mobile menu or the other click-only desktop menus. */
+    var servicesDropdown = document.getElementById("services-menu");
+    if (servicesDropdown) {
+      var servicesItem = servicesDropdown.parentElement;
+      var servicesToggle = servicesItem && servicesItem.querySelector(':scope > .nav__toggle');
+      var servicesLeaveTimer = null;
+      if (servicesItem && servicesToggle) {
+        var cancelServicesLeave = function () {
+          if (servicesLeaveTimer !== null) {
+            window.clearTimeout(servicesLeaveTimer);
+            servicesLeaveTimer = null;
+          }
+        };
+        servicesItem.addEventListener("pointerenter", cancelServicesLeave);
+        servicesItem.addEventListener("pointerleave", function (e) {
+          if (window.innerWidth <= 1080 || e.pointerType === "touch") return;
+          cancelServicesLeave();
+          // A brief bridge interval lets the pointer safely cross the small
+          // CSS gap between the button and its dropdown.
+          servicesLeaveTimer = window.setTimeout(function () {
+            servicesLeaveTimer = null;
+            if (!servicesItem.matches(":hover")) {
+              servicesDropdown.classList.remove("is-open");
+              servicesToggle.setAttribute("aria-expanded", "false");
+            }
+          }, 100);
+        });
+        servicesToggle.addEventListener("click", cancelServicesLeave);
+      }
+    }
   }
 
   /* ---- 4. Home hero: map layer switcher ---- */

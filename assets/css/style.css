@@ -817,16 +817,8 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
 }
 .sp-resources__list[hidden] { display: none !important; }
 .sp-resources__list .sp-menu-link { font-size: .87rem; padding: .7rem .85rem; }
-/* About Us and Capacity Building open only on click. Insights keeps the
-   existing hover interaction; its click/keyboard toggle also works. */
-@media (hover:hover) and (min-width:1081px) {
-  .nav__list > li:hover > #insights-menu.sp-nav-dropdown,
-  .nav__list > li:focus-within > #insights-menu.sp-nav-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
-}
+/* Insights opens ONLY on explicit click or keyboard activation (Enter/Space).
+   Do not re-enable parent :hover or :focus-within rules here. */
 @media (max-width:1080px) {
   #capacity-menu.sp-nav-dropdown,
   #insights-menu.sp-nav-dropdown {
@@ -888,4 +880,22 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
   .sp-resources__list .sp-menu-link { font-size: .92rem; line-height: 1.45; padding: .72rem .85rem; }
   .sp-resources__list .sp-menu-link:focus-visible,
   .sp-resources__toggle:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; }
+}
+
+/* SPEDAR NAV FIX — Services dismisses on mouse exit, not on link hover.
+   Transparent bridge avoids an accidental dismissal while moving down from
+   the Services button into the dropdown (desktop only). */
+@media (min-width:1081px) and (hover:hover) and (pointer:fine) {
+  /* Hide immediately on pointer exit while keeping the original open animation. */
+  #services-menu.dropdown { transition: opacity .15s ease, transform .15s ease, visibility 0s; }
+  #services-menu.dropdown::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -.6rem;
+    height: .6rem;
+    background: transparent;
+    pointer-events: auto;
+  }
 }

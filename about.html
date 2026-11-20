@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Us | SPEDAR Consultants</title>
-<meta name="description" content="Learn about SPEDAR Consultants, an emerging multidisciplinary research and consultancy team in Bangladesh: our mission, vision, approach, leadership and values.">
+<title>About Us | SPEDAR Consultants Ltd.</title>
+<meta name="description" content="Discover SPEDAR Consultants Ltd., founded on 4 October 2025 in Bangladesh. Our multidisciplinary team combines research, GIS, planning and environmental advisory.">
 <link rel="canonical" href="https://spedarconsultantsltd.github.io/about.html">
 <meta name="theme-color" content="#103F39">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SPEDAR Consultants Ltd.">
 <meta property="og:title" content="About Us | SPEDAR Consultants">
-<meta property="og:description" content="Learn about SPEDAR Consultants, an emerging multidisciplinary research and consultancy team in Bangladesh: our mission, vision, approach, leadership and values.">
+<meta property="og:description" content="Discover SPEDAR Consultants Ltd., founded on 4 October 2025 in Bangladesh. Research, GIS, planning and environmental advisory with a multidisciplinary approach.">
 <meta property="og:url" content="https://spedarconsultantsltd.github.io/about.html">
 <meta property="og:image" content="https://spedarconsultantsltd.github.io/assets/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,6 +25,120 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/site-config.js" defer></script>
 <script src="assets/js/main.js" defer></script>
+<style id="about-page-refresh">
+/* SPEDAR About editorial refresh — scoped to this page only.
+   All existing site-wide brand tokens, header and footer are retained. */
+.about-v2{overflow:hidden}
+.about-v2 .abt-wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.about-v2 .abt-eyebrow{font:600 .72rem/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal-ink);margin:0 0 1.2rem}
+.about-v2 .abt-eyebrow--light{color:#ddc58d}
+.about-v2 h1,.about-v2 h2,.about-v2 h3{font-family:var(--serif)}
+.about-v2 h2{font-size:clamp(2rem,2.4vw + 1.2rem,3.25rem);line-height:1.12;letter-spacing:-.025em}
+.about-v2 .abt-lead{font-size:clamp(1.1rem,1.2vw + .72rem,1.37rem);line-height:1.65;color:var(--ink-soft)}
+.about-v2 .abt-section{padding-block:clamp(4.5rem,7.5vw,8rem)}
+.about-v2 .abt-section--soft{background:var(--white)}
+.about-v2 .abt-section--sage{background:var(--sage)}
+.about-v2 .abt-rule{height:1px;background:var(--line);border:0;margin:0}
+.about-v2 .abt-link{display:inline-flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--teal-ink);padding-bottom:.25rem;color:var(--teal-ink);font-weight:600;font-size:.92rem;text-decoration:none;transition:gap .2s}
+.about-v2 .abt-link:hover{gap:1rem;color:var(--forest)}
+.about-v2 .abt-link::after{content:'↗';font-size:1rem}
+/* Opening spread */
+.about-v2 .abt-hero{background:var(--paper);position:relative;padding-block:clamp(3.1rem,5vw,5.8rem) clamp(3.5rem,5vw,5.5rem)}
+.about-v2 .abt-hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(2.25rem,4.5vw,5.5rem);align-items:center}
+.about-v2 .abt-crumb{display:flex;align-items:center;gap:.65rem;font-size:.78rem;letter-spacing:.03em;margin-bottom:clamp(2.5rem,4vw,4rem);color:var(--ink-soft)}
+.about-v2 .abt-crumb a{text-decoration:none}
+.about-v2 .abt-hero h1{font-size:clamp(3rem,5vw,5.5rem);line-height:1.04;letter-spacing:-.04em;color:var(--forest);max-width:12ch;margin:0 0 1.5rem;font-weight:500}
+.about-v2 .abt-hero h1 em{font-style:normal;color:var(--teal-ink)}
+.about-v2 .abt-hero .abt-lead{max-width:37rem;margin-bottom:2.25rem}
+.about-v2 .abt-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 1.65rem;border-top:1px solid var(--line-strong);padding-top:1.5rem;margin:0 0 2rem}
+.about-v2 .abt-fact{margin:0}
+.about-v2 .abt-fact:nth-child(2){grid-column:1;grid-row:2}
+.about-v2 .abt-fact:nth-child(3){grid-column:2;grid-row:1}
+.about-v2 .abt-fact:nth-child(4){grid-column:2;grid-row:2}
+.about-v2 .abt-fact dt{font:600 .67rem/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.45rem}
+.about-v2 .abt-fact dd{font-size:.98rem;line-height:1.4;color:var(--forest);font-weight:600;margin:0}
+.about-v2 .abt-hero-visual{height:clamp(430px,47vw,600px);position:relative;min-width:0}
+.about-v2 .abt-hero-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+.about-v2 .abt-hero-visual::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(9,43,39,.7),transparent 58%)}
+.about-v2 .abt-visual-caption{position:absolute;z-index:1;left:clamp(1.2rem,2.6vw,2.4rem);right:1rem;bottom:clamp(1.2rem,2.5vw,2.25rem);font:500 clamp(1.1rem,1.5vw,1.45rem)/1.42 var(--serif);color:var(--white);max-width:20ch}
+.about-v2 .abt-visual-caption:before{content:'';display:block;width:45px;height:2px;background:var(--gold);margin-bottom:1rem}
+.about-v2 .abt-side-script{position:absolute;right:0;top:0;bottom:0;width:12px;background:linear-gradient(var(--forest) 0 48%,var(--teal) 48% 84%,var(--gold) 84%)}
+/* Subnav */
+.about-v2 .abt-subnav{border-block:1px solid var(--line);background:var(--white)}
+.about-v2 .abt-subnav-inner{display:flex;gap:2rem;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+.about-v2 .abt-subnav a{display:inline-flex;align-items:center;padding:1.05rem 0;color:var(--ink-soft);text-decoration:none;font-weight:500;font-size:.86rem;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.about-v2 .abt-subnav a:hover,.about-v2 .abt-subnav a:focus-visible{color:var(--forest);border-bottom-color:var(--gold)}
+/* Story */
+.about-v2 .abt-story-grid{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1fr);gap:clamp(2rem,6vw,7.5rem)}
+.about-v2 .abt-story-grid h2{max-width:12ch;color:var(--forest)}
+.about-v2 .abt-story-copy p{line-height:1.82;color:var(--ink-soft);margin-bottom:1.25rem}
+.about-v2 .abt-story-copy .abt-lead{font-family:var(--serif);font-size:clamp(1.4rem,1.8vw,1.85rem);line-height:1.52;color:var(--ink);font-weight:400;margin-bottom:1.6rem}
+.about-v2 .abt-pillar{border-left:3px solid var(--gold);padding:1.3rem 0 1.2rem 1.5rem;margin-top:2rem;color:var(--forest);font:500 clamp(1.15rem,1.6vw,1.5rem)/1.4 var(--serif)}
+/* Mission and vision */
+.about-v2 .abt-purpose{background:var(--forest);color:var(--paper);padding-block:clamp(4.5rem,7vw,7rem);position:relative;isolation:isolate}
+.about-v2 .abt-purpose::before{content:'';position:absolute;inset:0;z-index:-1;opacity:.17;background:url('assets/images/landscape-contours.svg') center/cover no-repeat;mix-blend-mode:screen}
+.about-v2 .abt-purpose h2{color:var(--white);max-width:21ch;margin-bottom:2rem}
+.about-v2 .abt-purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,5rem)}
+.about-v2 .abt-purpose-item{border-top:1px solid rgba(255,255,255,.34);padding-top:1.6rem}
+.about-v2 .abt-purpose-item h3{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;color:#d9bb80;margin-bottom:1.1rem}
+.about-v2 .abt-purpose-item p{color:rgba(247,247,243,.91);font-family:var(--serif);font-size:clamp(1.27rem,2vw,1.7rem);line-height:1.5;margin-bottom:0}
+/* Work areas */
+.about-v2 .abt-heading-row{display:grid;grid-template-columns:1fr minmax(0,.7fr);gap:2rem;align-items:end;margin-bottom:2.5rem}
+.about-v2 .abt-heading-row h2{max-width:14ch;margin-bottom:0;color:var(--forest)}
+.about-v2 .abt-heading-row p{margin:0;color:var(--ink-soft)}
+.about-v2 .abt-capabilities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+.about-v2 .abt-capability{position:relative;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(1.5rem,2.4vw,2.5rem);background:var(--white);border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);text-decoration:none;color:var(--ink);min-height:240px;transition:background .25s}
+.about-v2 .abt-capability:hover{background:#f0f6f0;color:var(--forest)}
+.about-v2 .abt-capability svg{height:34px;width:34px;color:var(--teal);margin-bottom:2rem}
+.about-v2 .abt-capability h3{font-family:var(--sans);font-weight:600;font-size:clamp(1.03rem,1.15vw,1.22rem);line-height:1.35;color:var(--forest);margin-bottom:.65rem}
+.about-v2 .abt-capability p{font-size:.91rem;color:var(--ink-soft);line-height:1.6;margin-bottom:1.4rem}
+.about-v2 .abt-capability span{font-size:.83rem;font-weight:600;color:var(--teal-ink);margin-top:auto}
+/* Our model */
+.about-v2 .abt-delivery-grid{display:grid;grid-template-columns:.65fr 1fr;gap:clamp(2rem,5vw,6rem)}
+.about-v2 .abt-delivery-head h2{max-width:13ch;color:var(--forest)}
+.about-v2 .abt-delivery-head p{color:var(--ink-soft);line-height:1.7}
+.about-v2 .abt-process{list-style:none;padding:0;margin:0;border-top:1px solid var(--line-strong)}
+.about-v2 .abt-process li{display:grid;grid-template-columns:72px 1fr;gap:1rem;padding:1.35rem 0;border-bottom:1px solid var(--line);margin:0}
+.about-v2 .abt-process-no{font:500 1.3rem/1 var(--serif);color:var(--teal-ink)}
+.about-v2 .abt-process h3{font:600 1rem/1.3 var(--sans);color:var(--forest);margin-bottom:.45rem}
+.about-v2 .abt-process p{color:var(--ink-soft);font-size:.9rem;line-height:1.62;margin:0}
+/* Quality principles */
+.about-v2 .abt-quality{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.about-v2 .abt-quality-item{background:var(--paper);padding:1.7rem 1.4rem 2rem;border-top:3px solid var(--teal)}
+.about-v2 .abt-quality-item:nth-child(even){border-top-color:var(--gold)}
+.about-v2 .abt-quality-item h3{font:600 1.05rem/1.38 var(--sans);color:var(--forest);margin-bottom:.75rem}
+.about-v2 .abt-quality-item p{font-size:.92rem;line-height:1.65;color:var(--ink-soft);margin:0}
+/* Team and leadership */
+.about-v2 .abt-team-intro{display:grid;grid-template-columns:1fr .9fr;gap:3rem;align-items:center;margin-bottom:clamp(3rem,5vw,5rem)}
+.about-v2 .abt-team-intro h2{color:var(--forest);max-width:15ch}
+.about-v2 .abt-team-intro p{color:var(--ink-soft);line-height:1.7}
+.about-v2 .abt-team-collage{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;align-items:center}
+.about-v2 .abt-team-collage img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.9);background:var(--sage)}
+.about-v2 .abt-team-collage img:nth-child(2){transform:translateY(1rem)}
+.about-v2 .abt-leader-panel{display:grid;grid-template-columns:minmax(240px,.75fr) minmax(0,1.25fr);background:var(--white);border:1px solid var(--line)}
+.about-v2 .abt-leader-photo{position:relative;min-height:430px;background:var(--sage)}
+.about-v2 .abt-leader-photo img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 20%}
+.about-v2 .abt-leader-copy{padding:clamp(2rem,4vw,4rem)}
+.about-v2 .abt-leader-copy h3{font-size:clamp(2rem,3vw,3rem);color:var(--forest);margin-bottom:.4rem}
+.about-v2 .abt-leader-role{font-size:.87rem;letter-spacing:.06em;color:var(--teal-ink);font-weight:600;margin:0 0 1.7rem}
+.about-v2 .abt-leader-copy p{line-height:1.76;color:var(--ink-soft);font-size:.95rem}
+.about-v2 .abt-leader-copy .abt-lead{font-size:1.15rem;color:var(--ink)}
+.about-v2 .abt-leader-more{font-size:.86rem;padding:.8rem 0;border-top:1px solid var(--line);margin:1.25rem 0}
+.about-v2 .abt-leader-more summary{cursor:pointer;font-weight:600;color:var(--forest)}
+.about-v2 .abt-leader-more p{margin:1rem 0 0}
+/* CTA */
+.about-v2 .abt-cta{background:var(--sage);padding-block:clamp(4.3rem,6vw,6rem)}
+.about-v2 .abt-cta-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.about-v2 .abt-cta h2{font-size:clamp(2.2rem,3.5vw,4rem);color:var(--forest);max-width:18ch;margin-bottom:1rem}
+.about-v2 .abt-cta p{color:var(--ink-soft);margin:0}
+.about-v2 .abt-cta-actions{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+@media(max-width:1080px){.about-v2 .abt-hero-grid{gap:2.1rem}.about-v2 .abt-hero h1{font-size:clamp(2.7rem,4.9vw,4.3rem)}.about-v2 .abt-capability{padding:1.5rem;min-height:265px}}
+@media(max-width:900px){.about-v2 .abt-hero-grid,.about-v2 .abt-story-grid,.about-v2 .abt-delivery-grid,.about-v2 .abt-team-intro{grid-template-columns:1fr}.about-v2 .abt-hero h1{max-width:15ch}.about-v2 .abt-hero-visual{height:340px}.about-v2 .abt-crumb{margin-bottom:2rem}.about-v2 .abt-story-grid h2{max-width:100%}.about-v2 .abt-quality{grid-template-columns:repeat(2,1fr)}.about-v2 .abt-team-collage{max-width:520px}.about-v2 .abt-team-intro{gap:2rem}.about-v2 .abt-leader-panel{grid-template-columns:.8fr 1.2fr}.about-v2 .abt-cta-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.about-v2 .abt-hero{padding-top:2rem}.about-v2 .abt-hero h1{font-size:clamp(2.85rem,10.5vw,4rem)}.about-v2 .abt-hero-visual{height:320px}.about-v2 .abt-facts{grid-template-columns:1fr 1fr;gap:1.25rem}.about-v2 .abt-fact dd{font-size:.89rem}.about-v2 .abt-subnav-inner{gap:1.3rem}.about-v2 .abt-purpose-grid,.about-v2 .abt-heading-row{grid-template-columns:1fr}.about-v2 .abt-heading-row{gap:1rem}.about-v2 .abt-capabilities{grid-template-columns:1fr 1fr}.about-v2 .abt-capability{min-height:230px;padding:1.2rem}.about-v2 .abt-capability svg{margin-bottom:1.2rem}.about-v2 .abt-capability h3{font-size:1rem}.about-v2 .abt-capability p{font-size:.85rem}.about-v2 .abt-quality{gap:.75rem}.about-v2 .abt-leader-panel{grid-template-columns:1fr}.about-v2 .abt-leader-photo{min-height:370px}.about-v2 .abt-leader-photo img{object-position:center 12%}.about-v2 .abt-leader-copy{padding:2rem 1.4rem}}
+@media(max-width:440px){.about-v2 .abt-facts{grid-template-columns:1fr}.about-v2 .abt-fact:nth-child(n){grid-column:auto;grid-row:auto}.about-v2 .abt-capabilities{grid-template-columns:1fr}.about-v2 .abt-capability{min-height:0}.about-v2 .abt-quality{grid-template-columns:1fr}.about-v2 .abt-team-collage{gap:.35rem}.about-v2 .abt-hero-visual{height:285px}.about-v2 .abt-process li{grid-template-columns:48px 1fr}}
+@media(prefers-reduced-motion:reduce){.about-v2 .abt-capability,.about-v2 .abt-link{transition:none}.about-v2 .abt-team-collage img:nth-child(2){transform:none}}
+
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -42,105 +156,131 @@
     </nav>
   </div>
 </header>
-<main id="main">
-<section class="page-hero">
-  <img class="page-hero__contours" src="assets/images/landscape-contours.svg" alt="" width="1600" height="1200">
-  <div class="wrap page-hero__inner">
-    <div class="page-hero__text">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span aria-current="page">About us</span></nav>
-      <h1>A multidisciplinary team for sustainable development</h1>
-      <p class="lead">We bring environmental science, spatial technology, planning and digital skills together to help clients understand complex places and make better-informed decisions.</p>
-    </div>
-    <div class="page-hero__aside"><p><strong>Founded</strong><br>2025</p><p><strong>Based in</strong><br>Bangladesh</p><p><strong>Team</strong><br>Twelve professionals across six practice units</p></div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="who-title">
-  <div class="wrap editorial">
-    <div class="editorial__label"><h2 id="who-title">Who we are</h2></div>
-    <div class="editorial__body">
-      <p class="lead">SPEDAR Consultants is an emerging research and consultancy team, formed in 2025 by planners and environmental researchers who saw the value of combining their disciplines under one roof.</p>
-      <p>Our members have worked on assignments for national research institutes, engineering consultancies, development programmes and public agencies, and have published research on flood and drought vulnerability, land-use change, river erosion, green infrastructure and urban mobility. SPEDAR brings that experience together into a single, coordinated team.</p>
-      <p>We are building the practice deliberately. We currently take on focused, project-based assignments, research collaborations and technical support roles, and we are developing the capacity to deliver larger consultancy contracts independently and in partnership with other firms. Team members contribute on a project basis according to the expertise each assignment requires.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section bg-forest on-dark" aria-label="Mission and vision">
-  <div class="wrap mv">
-    <div class="mv__item">
-      <h2>Our mission</h2>
-      <blockquote><p>To deliver research-driven, practical and sustainable solutions by integrating environmental science, spatial technologies, urban and regional planning, data analytics and multidisciplinary expertise.</p></blockquote>
-    </div>
-    <div class="mv__item">
-      <h2>Our vision</h2>
-      <blockquote><p>To become a trusted multidisciplinary consultancy supporting evidence-based planning, environmental sustainability, climate resilience and responsible development in Bangladesh and beyond.</p></blockquote>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="approach" aria-labelledby="approach-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="approach-title">Our approach</h2>
-      <p class="section-head__deck">A structured method that keeps each assignment tied to the decision it is meant to inform.</p>
-    </div>
-    <ol class="steps">
-      <li><h3>Understand the challenge</h3><p>Clarify the decision to be made, the stakeholders involved, the geography and the constraints of time, budget and data.</p></li>
-      <li><h3>Collect evidence</h3><p>Review literature and policy, assemble existing data, acquire satellite imagery and design field surveys where gaps remain.</p></li>
-      <li><h3>Analyse and assess</h3><p>Apply spatial, statistical and qualitative methods, check accuracy and test assumptions before drawing conclusions.</p></li>
-      <li><h3>Develop solutions</h3><p>Translate findings into options and recommendations, weighing technical feasibility, cost, equity and environmental outcomes.</p></li>
-      <li><h3>Report and support decisions</h3><p>Deliver clear reports, maps, dashboards and presentations, and remain available to support implementation.</p></li>
-    </ol>
-  </div>
-</section>
-
-<section class="section bg-white" aria-labelledby="exp-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="exp-title">Our expertise</h2>
-      <p class="section-head__deck">Each practice area is led by a team member with relevant training and project experience, and draws on colleagues from the other units.</p>
-    </div>
-    <div class="practice-index"><article class="practice"><svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-gis"></use></svg><h3><a href="services.html#gis">GIS &amp; Remote Sensing</a></h3><p>Mapping, satellite image analysis and spatial databases that turn location data into evidence.</p><span class="practice__more" aria-hidden="true">View services</span></article><article class="practice"><svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-climate"></use></svg><h3><a href="services.html#environment">Environmental &amp; Climate Consulting</a></h3><p>Baseline studies, climate vulnerability assessment and environmental monitoring support.</p><span class="practice__more" aria-hidden="true">View services</span></article><article class="practice"><svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-urban"></use></svg><h3><a href="services.html#planning">Urban &amp; Regional Planning</a></h3><p>Land-use, settlement and infrastructure analysis for sustainable spatial development.</p><span class="practice__more" aria-hidden="true">View services</span></article><article class="practice"><svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-research"></use></svg><h3><a href="services.html#research">Research &amp; Development</a></h3><p>Applied research design, field surveys, socioeconomic assessment and technical reporting.</p><span class="practice__more" aria-hidden="true">View services</span></article><article class="practice"><svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-data"></use></svg><h3><a href="services.html#digital">Data Analytics &amp; Digital Solutions</a></h3><p>Data analysis, dashboards, interactive maps, websites and software prototypes.</p><span class="practice__more" aria-hidden="true">View services</span></article><article class="practice"><svg class="practice__icon" aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-sustain"></use></svg><h3><a href="services.html#sustainability">Sustainability &amp; Development Advisory</a></h3><p>Policy analysis, SDG-aligned research and resilience strategies for development programmes.</p><span class="practice__more" aria-hidden="true">View services</span></article></div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="leader-title">
-  <div class="wrap">
-    <h2 id="leader-title" class="mb-0" style="margin-bottom:var(--s-5)">Leadership</h2>
-    <div class="leader">
-      <div class="leader__portrait"><div class="portrait" role="img" aria-label="Portrait of Md. Tahatul Azid"><span aria-hidden="true">TA</span><img src="assets/images/team/tahatul-azid.webp" alt="Md. Tahatul Azid" width="800" height="1000" loading="lazy" decoding="async"></div></div>
-      <div class="leader__body">
-        <h3>Md. Tahatul Azid</h3>
-        <p class="leader__role">Chief Executive Officer &amp; Managing Director</p>
-        <p class="lead">Tahatul leads SPEDAR's strategy, client relationships, proposals and quality review.</p>
-        <p>Tahatul is an urban and regional planner whose work combines GIS, environmental and climate research, and project coordination. He has supported GIS mapping and local hazard-preparedness planning with municipal authorities, technical analysis for waste-to-resource project planning, and community field-survey programmes as a facilitator and master trainer. He has authored and co-authored research on flood and drought vulnerability, land-use change, river erosion and transport.</p>
-        <dl class="facts">
-          <dt>Education</dt><dd>Bachelor of Urban and Regional Planning (BURP), Rajshahi University of Engineering &amp; Technology (RUET), 2024. Currently enrolled in Environmental Science and Management, Bangladesh University of Professionals (from 2026).</dd>
-          <dt>Research</dt><dd>Lead author of a Springer Geography book chapter (2025) on geospatial analysis of flood and drought vulnerability in Rajshahi District; co-author of conference papers presented at the 10th International Conference on Water and Flood Management and other forums.</dd>
+<main id="main" class="about-v2">
+  <section class="abt-hero" aria-labelledby="about-title">
+    <div class="abt-wrap abt-hero-grid">
+      <div class="abt-hero-copy">
+        <nav class="abt-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">About us</span></nav>
+        <p class="abt-eyebrow">About SPEDAR Consultants</p>
+        <h1 id="about-title">Built around <em>evidence.</em> Driven by purpose.</h1>
+        <p class="abt-lead">We connect research, spatial intelligence, planning and digital innovation to help organisations respond to complex development and environmental challenges with clarity.</p>
+        <dl class="abt-facts">
+          <div class="abt-fact"><dt>Founded</dt><dd>4 October 2025</dd></div>
+          <div class="abt-fact"><dt>Our team</dt><dd>Multidisciplinary professionals across specialised practice areas</dd></div>
+          <div class="abt-fact"><dt>Our base</dt><dd>Bangladesh</dd></div>
+          <div class="abt-fact"><dt>Our focus</dt><dd>Research, planning &amp; consultancy</dd></div>
         </dl>
-        <a class="text-link" href="team.html">Meet the team</a>
+        <a class="abt-link" href="team.html">Meet the people behind SPEDAR</a>
+      </div>
+      <div class="abt-hero-visual">
+        <img src="assets/images/plate-delta.webp" alt="Illustrative abstract terrain and river network graphic" width="1200" height="800" fetchpriority="high">
+        <div class="abt-side-script" aria-hidden="true"></div>
+        <div class="abt-visual-caption">Understanding places.<br>Informing decisions.<br>Designing what comes next.</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section bg-sage" aria-labelledby="values-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="values-title">Our values</h2>
-      <p class="section-head__deck">The standards we hold ourselves to, and that clients can hold us to.</p>
+  <nav class="abt-subnav" aria-label="About page sections">
+    <div class="abt-wrap abt-subnav-inner">
+      <a href="#who-we-are">Our story</a><a href="#our-purpose">Purpose</a><a href="#our-expertise">Expertise</a><a href="#our-approach">How we work</a><a href="#quality">Quality</a><a href="#our-people">People</a>
     </div>
-    <div class="values">
-      <div class="value"><h3>Integrity</h3><p>We describe our capabilities, methods and results honestly, including their limits.</p></div>
-      <div class="value"><h3>Scientific rigour</h3><p>We use sound methods, document our workflows and check our results before we share them.</p></div>
-      <div class="value"><h3>Sustainability</h3><p>We consider long-term environmental and social consequences in every recommendation.</p></div>
-      <div class="value"><h3>Collaboration</h3><p>We work openly with clients, communities and partner institutions, and value local knowledge.</p></div>
-      <div class="value"><h3>Accountability</h3><p>We take responsibility for quality, deadlines and the confidentiality of client information.</p></div>
-      <div class="value"><h3>Innovation</h3><p>We adopt new data sources and tools where they genuinely improve the evidence available to decision-makers.</p></div>
+  </nav>
+
+  <section class="abt-section" id="who-we-are" aria-labelledby="who-title">
+    <div class="abt-wrap abt-story-grid">
+      <div><p class="abt-eyebrow">Who we are</p><h2 id="who-title">A connected practice for complex challenges.</h2></div>
+      <div class="abt-story-copy">
+        <p class="abt-lead">Good consultancy starts by understanding the problem—not by choosing the tool before asking the question.</p>
+        <p>Founded on 4 October 2025, SPEDAR Consultants brings together urban and regional planners, environmental and social researchers, geospatial analysts, engineers and digital specialists. We work across disciplines because the questions facing communities, institutions and development projects rarely fit within a single field.</p>
+        <p>Our work connects field evidence with geospatial data, technical assessment and practical planning. Depending on the assignment, that may mean understanding land-use change, assessing environmental and social risks, preparing feasibility inputs, analysing urban and regional systems, or developing digital tools that make complex information easier to act upon.</p>
+        <p>We undertake project-based technical assignments, research collaboration and advisory support. Our multidisciplinary approach allows teams to be assembled around the demands of each brief, with clear responsibilities, documented methods and outputs designed for the people who will use them.</p>
+        <div class="abt-pillar">Integrated expertise. Context-sensitive research. Results that can be used.</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="abt-purpose" id="our-purpose" aria-labelledby="purpose-title">
+    <div class="abt-wrap">
+      <p class="abt-eyebrow abt-eyebrow--light">Our purpose</p>
+      <h2 id="purpose-title">Making evidence meaningful for a more sustainable future.</h2>
+      <div class="abt-purpose-grid">
+        <div class="abt-purpose-item"><h3>Our mission</h3><p>To deliver dependable, research-led consultancy that combines multidisciplinary knowledge, sound analysis and fit-for-purpose technology to support practical, inclusive and sustainable decisions.</p></div>
+        <div class="abt-purpose-item"><h3>Our vision</h3><p>To grow as a trusted consultancy recognised for the quality of its evidence, integrity of its advice and contribution to resilient communities, responsible development and environmental stewardship.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abt-section abt-section--soft" id="our-expertise" aria-labelledby="expertise-title">
+    <div class="abt-wrap">
+      <div class="abt-heading-row"><div><p class="abt-eyebrow">Our capabilities</p><h2 id="expertise-title">Expertise that works together.</h2></div><p>From field surveys and impact assessment to spatial planning and software, our practices connect research to implementation-oriented advice.</p></div>
+      <div class="abt-capabilities">
+        <a class="abt-capability" href="services.html#gis"><svg aria-hidden="true"><use href="assets/icons/icons.svg#i-gis"></use></svg><h3>GIS &amp; Remote Sensing</h3><p>Spatial data, mapping, satellite analysis and geospatial decision support.</p><span>Explore expertise ↗</span></a>
+        <a class="abt-capability" href="services.html#environment"><svg aria-hidden="true"><use href="assets/icons/icons.svg#i-climate"></use></svg><h3>Environmental &amp; Climate Advisory</h3><p>Environmental and social studies, climate resilience and resource assessments.</p><span>Explore expertise ↗</span></a>
+        <a class="abt-capability" href="services.html#planning"><svg aria-hidden="true"><use href="assets/icons/icons.svg#i-urban"></use></svg><h3>Urban &amp; Regional Planning</h3><p>Land-use studies, settlement analysis and spatial development planning.</p><span>Explore expertise ↗</span></a>
+        <a class="abt-capability" href="services.html#research"><svg aria-hidden="true"><use href="assets/icons/icons.svg#i-research"></use></svg><h3>Research, Surveys &amp; Assessment</h3><p>Fieldwork, socioeconomic studies, feasibility inputs and technical reporting.</p><span>Explore expertise ↗</span></a>
+        <a class="abt-capability" href="services.html#digital"><svg aria-hidden="true"><use href="assets/icons/icons.svg#i-data"></use></svg><h3>Data &amp; Digital Solutions</h3><p>Applied analytics, dashboards, interactive maps and software solutions.</p><span>Explore expertise ↗</span></a>
+        <a class="abt-capability" href="services.html#sustainability"><svg aria-hidden="true"><use href="assets/icons/icons.svg#i-sustain"></use></svg><h3>Sustainability &amp; Development</h3><p>Policy support, sustainability studies and development programme advisory.</p><span>Explore expertise ↗</span></a>
+      </div>
+      <p style="margin:2rem 0 0"><a class="abt-link" href="service-directory.html">Browse the complete service directory</a></p>
+    </div>
+  </section>
+
+  <section class="abt-section abt-section--sage" id="our-approach" aria-labelledby="approach-title">
+    <div class="abt-wrap abt-delivery-grid">
+      <div class="abt-delivery-head"><p class="abt-eyebrow">How we work</p><h2 id="approach-title">From the initial question to a usable outcome.</h2><p>We tailor the scope, methods and team to the assignment. The aim is not simply to produce a report; it is to give decision-makers a clearer understanding of their options.</p><a class="abt-link" href="capabilities.html">Explore our delivery approach</a></div>
+      <ol class="abt-process">
+        <li><span class="abt-process-no" aria-hidden="true">01</span><div><h3>Listen &amp; define</h3><p>Understand the purpose, stakeholders, decision context, available resources and key risks.</p></div></li>
+        <li><span class="abt-process-no" aria-hidden="true">02</span><div><h3>Design the methodology</h3><p>Choose an appropriate mix of desk research, field data, geospatial analysis and specialist assessment.</p></div></li>
+        <li><span class="abt-process-no" aria-hidden="true">03</span><div><h3>Investigate &amp; analyse</h3><p>Evaluate evidence, document assumptions, review data quality and examine relevant alternatives.</p></div></li>
+        <li><span class="abt-process-no" aria-hidden="true">04</span><div><h3>Develop recommendations</h3><p>Present feasible options with attention to technical, economic, social and environmental considerations.</p></div></li>
+        <li><span class="abt-process-no" aria-hidden="true">05</span><div><h3>Communicate &amp; support</h3><p>Provide clear reports, maps, datasets and visual outputs that support discussion and next steps.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="abt-section abt-section--soft" id="quality" aria-labelledby="quality-title">
+    <div class="abt-wrap">
+      <div class="abt-heading-row"><div><p class="abt-eyebrow">Quality commitments</p><h2 id="quality-title">Professional standards begin with how we work.</h2></div><p>These are our practice commitments—not claims of external certification. They shape how we plan, review and communicate assignments.</p></div>
+      <div class="abt-quality">
+        <div class="abt-quality-item"><h3>Technical rigour</h3><p>Evidence-led methods, careful documentation and appropriate review of assumptions and outputs.</p></div>
+        <div class="abt-quality-item"><h3>Integrity &amp; accountability</h3><p>Honest communication about scope, uncertainty, limitations and professional responsibilities.</p></div>
+        <div class="abt-quality-item"><h3>Collaboration &amp; inclusion</h3><p>Respect for client needs, community perspectives and specialist knowledge across disciplines.</p></div>
+        <div class="abt-quality-item"><h3>Practical value</h3><p>Timely, accessible deliverables that help people understand findings and take informed action.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abt-section" id="our-people" aria-labelledby="people-title">
+    <div class="abt-wrap">
+      <div class="abt-team-intro">
+        <div><p class="abt-eyebrow">Our people</p><h2 id="people-title">Different disciplines. Shared responsibility.</h2><p>SPEDAR is shaped by professionals whose strengths span research, planning, environment, GIS, software, design and project support. We collaborate across specialised practice areas to respond to each assignment with the expertise it requires.</p><a class="abt-link" href="team.html">Meet our multidisciplinary team</a></div>
+        <div class="abt-team-collage" aria-label="Portraits of SPEDAR team members">
+          <img src="assets/images/team/tanmoy-dev.webp" width="400" height="500" alt="Tanmoy Dev" loading="lazy" decoding="async">
+          <img src="assets/images/team/kallyani-chakma.webp" width="400" height="500" alt="Kallyani Chakma" loading="lazy" decoding="async">
+          <img src="assets/images/team/niyamul-pratiti.webp" width="400" height="500" alt="Md. Niyamul Pratiti" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="abt-leader-panel">
+        <div class="abt-leader-photo"><img src="assets/images/team/tahatul-azid.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Portrait of Md. Tahatul Azid"></div>
+        <div class="abt-leader-copy">
+          <p class="abt-eyebrow">Leadership</p>
+          <h3>Md. Tahatul Azid</h3>
+          <p class="abt-leader-role">Chief Executive Officer &amp; Managing Director</p>
+          <p class="abt-lead">Leading a multidisciplinary approach to research, planning and practical consultancy.</p>
+          <p>Tahatul oversees SPEDAR's strategy, client engagement, proposals and quality review. His work connects urban and regional planning with GIS, environmental research and project coordination, including spatial analysis, local hazard-preparedness planning, field programmes and applied research.</p>
+          <details class="abt-leader-more"><summary>Education and selected research</summary><p>Bachelor of Urban and Regional Planning (BURP), Rajshahi University of Engineering &amp; Technology (RUET), 2024. Enrolled in Environmental Science and Management at Bangladesh University of Professionals (from 2026). His research includes a Springer Geography book chapter on geospatial flood and drought vulnerability in Rajshahi District and conference work on environmental and spatial issues.</p></details>
+          <a class="abt-link" href="team.html">Explore our people and expertise</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abt-cta" aria-labelledby="about-cta-title">
+    <div class="abt-wrap abt-cta-grid">
+      <div><p class="abt-eyebrow">Work with SPEDAR</p><h2 id="about-cta-title">Start with a challenge. Move forward with evidence.</h2><p>Tell us about the questions your organisation is working to answer.</p></div>
+      <div class="abt-cta-actions"><a class="btn btn--primary" href="contact.html">Discuss your project</a><a class="btn btn--ghost" href="work.html">Explore our work</a></div>
+    </div>
+  </section>
 </main>
 <footer class="site-footer on-dark">
   <div class="wrap">

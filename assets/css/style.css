@@ -679,3 +679,18 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
   body { background: #fff; }
   .hero, .page-hero--forest, .bg-forest, .bg-ink { background: #fff !important; color: #000 !important; }
 }
+
+
+/* SPEDAR brand refresh — official green S mark and exact Ltd. wordmark.
+   Preserve the established forest/teal/gold site identity and section design. */
+.brand img.brand__mark { width: 44px; height: 44px; object-fit: contain; flex-shrink: 0; }
+.brand img.brand__wordmark { width: 174px; height: auto; max-height: 54px; object-fit: contain; }
+.footer-brand .brand img.brand__mark { background: var(--paper); border-radius: 50%; padding: 4px; }
+.footer-brand .brand img.brand__wordmark { background: none; border-radius: 0; padding: 0; }
+/* Subtle new leaf-green signature without changing original site-wide palette. */
+.brand:hover img.brand__mark { filter: drop-shadow(0 1px 2px rgba(94, 156, 43, .28)); }
+@media (max-width: 420px) {
+  .brand { gap: .4rem; }
+  .brand img.brand__mark { width: 36px; height: 36px; }
+  .brand img.brand__wordmark { width: 143px; max-height: 44px; }
+}

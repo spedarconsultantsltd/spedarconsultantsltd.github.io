@@ -269,38 +269,29 @@
       });
     });
 
-    /* Services: clicking opens the existing menu, but leaving its entire
-       button/dropdown area with the mouse automatically closes it. This does
-       NOT affect the mobile menu or the other click-only desktop menus. */
-    var servicesDropdown = document.getElementById("services-menu");
-    if (servicesDropdown) {
-      var servicesItem = servicesDropdown.parentElement;
-      var servicesToggle = servicesItem && servicesItem.querySelector(':scope > .nav__toggle');
-      var servicesLeaveTimer = null;
-      if (servicesItem && servicesToggle) {
-        var cancelServicesLeave = function () {
-          if (servicesLeaveTimer !== null) {
-            window.clearTimeout(servicesLeaveTimer);
-            servicesLeaveTimer = null;
-          }
-        };
-        servicesItem.addEventListener("pointerenter", cancelServicesLeave);
-        servicesItem.addEventListener("pointerleave", function (e) {
-          if (window.innerWidth <= 1080 || e.pointerType === "touch") return;
-          cancelServicesLeave();
-          // A brief bridge interval lets the pointer safely cross the small
-          // CSS gap between the button and its dropdown.
-          servicesLeaveTimer = window.setTimeout(function () {
-            servicesLeaveTimer = null;
-            if (!servicesItem.matches(":hover")) {
-              servicesDropdown.classList.remove("is-open");
-              servicesToggle.setAttribute("aria-expanded", "false");
-            }
-          }, 100);
-        });
-        servicesToggle.addEventListener("click", cancelServicesLeave);
-      }
-    }
+    /* All desktop dropdowns: click to open, instant close on pointer exit.
+       The dropdown is a child of its list item, so moving between the toggle
+       and the panel is safe once the CSS gap is removed. Mobile stays click-only. */
+    $all(".nav__list > li", nav).forEach(function (item) {
+      var toggle = item.querySelector(":scope > .nav__toggle");
+      var dropdown = item.querySelector(":scope > .dropdown");
+      if (!toggle || !dropdown) return;
+      item.addEventListener("pointerleave", function (event) {
+        if (window.innerWidth <= 1080 || event.pointerType === "touch") return;
+        // If a submenu remains a DOM descendant, it is part of the hover area.
+        dropdown.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        if (dropdown.id === "capacity-menu") {
+          var resources = dropdown.querySelector(".sp-resources");
+          var resButton = dropdown.querySelector(".sp-resources__toggle");
+          var resPanel = dropdown.querySelector(".sp-resources__list");
+          if (resources) resources.classList.remove("is-open");
+          if (resButton) resButton.setAttribute("aria-expanded", "false");
+          if (resPanel) resPanel.hidden = true;
+        }
+      });
+    });
+
   }
 
   /* ---- 4. Home hero: map layer switcher ---- */
@@ -407,6 +398,9 @@
       var name = form.elements.name.value.trim();
       var email = form.elements.email.value.trim();
       var org = form.elements.organisation.value.trim();
+      var phone = form.elements.phone ? form.elements.phone.value.trim() : "";
+      var location = form.elements["project-location"] ? form.elements["project-location"].value.trim() : "";
+      var timeline = form.elements.timeline ? form.elements.timeline.value.trim() : "";
       var topic = form.elements.topic.value;
       var msg = form.elements.message.value.trim();
       var ok = true;
@@ -417,7 +411,7 @@
       if (!ok) { var first = form.querySelector('[aria-invalid="true"]'); if (first) first.focus(); return; }
 
       var subject = (fc.subjectPrefix || "Project enquiry") + ": " + topic + (org ? " (" + org + ")" : "");
-      var body = "Name: " + name + "\nEmail: " + email + (org ? "\nOrganisation: " + org : "") + "\nArea of interest: " + topic + "\n\n" + msg + "\n";
+      var body = "Name: " + name + "\nEmail: " + email + (org ? "\nOrganisation: " + org : "") + (phone ? "\nPhone: " + phone : "") + "\nArea of interest: " + topic + (location ? "\nProject location: " + location : "") + (timeline ? "\nExpected timeline: " + timeline : "") + "\n\n" + msg + "\n";
 
       if (fc.mode === "endpoint" && fc.formEndpoint) {
         if (statusEl) statusEl.textContent = "Sending…";

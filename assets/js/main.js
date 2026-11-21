@@ -100,7 +100,7 @@
     var oldHref = insights.getAttribute("href") || "insights.html";
     var prefix = oldHref.slice(0, oldHref.lastIndexOf("insights.html"));
     var path = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
-    var capPages = ["capacity-building.html","training.html","workshops.html","seminars-webinars.html","careers.html","publications.html","survey-equipment.html","software-tools.html"];
+    var capPages = ["capacity-building.html","careers.html","achievements.html","publications.html","software-tools.html"];
     var insightPages = ["insights.html","news.html","content.html","events.html"];
 
     // Remove the former stand-alone Careers main menu item, if hard-coded.
@@ -140,10 +140,8 @@
     capLi.appendChild(makeToggle("Capacity Building", "capacity-menu", capPages.indexOf(path) !== -1));
     var capMenu = makeMenu("capacity-menu", "Capacity Building pages");
     capMenu.appendChild(makeLink("capacity-building.html", "Overview", "sp-menu-link sp-menu-link--overview"));
-    capMenu.appendChild(makeLink("training.html", "Training"));
-    capMenu.appendChild(makeLink("workshops.html", "Workshops"));
-    capMenu.appendChild(makeLink("seminars-webinars.html", "Seminars & Webinars"));
     capMenu.appendChild(makeLink("careers.html", "Careers"));
+    capMenu.appendChild(makeLink("achievements.html", "Achievements"));
 
     var res = document.createElement("div");
     res.className = "sp-resources";
@@ -158,7 +156,6 @@
     resList.id = "sp-resources-list";
     resList.hidden = true;
     resList.appendChild(makeLink("publications.html", "Publications"));
-    resList.appendChild(makeLink("survey-equipment.html", "High-Precision DGPS & Survey Equipment"));
     resList.appendChild(makeLink("software-tools.html", "Software, Tools & Techniques"));
     res.appendChild(resBtn);
     res.appendChild(resList);
@@ -192,35 +189,32 @@
       res.classList.toggle("is-open", open);
       if (open) positionResourcesFlyout();
     };
-    if (["publications.html","survey-equipment.html","software-tools.html"].indexOf(path) !== -1) {
-      resourcesOpen(true);
-    }
+    // Desktop hover intent: keep the flyout visible while the pointer remains
+    // on Resources or anywhere inside its submenu, with NO delayed dismissal.
+    var desktopHover = function () { return window.innerWidth > 1080 && window.matchMedia("(hover:hover) and (pointer:fine)").matches; };
+    res.addEventListener("pointerenter", function (e) {
+      if (desktopHover() && e.pointerType !== "touch") resourcesOpen(true);
+    });
+    res.addEventListener("pointerleave", function (e) {
+      if (desktopHover() && e.pointerType !== "touch") resourcesOpen(false);
+    });
     resBtn.addEventListener("click", function (e) {
       e.stopPropagation();
-      resourcesOpen(resBtn.getAttribute("aria-expanded") !== "true");
-    });
-    resBtn.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") { resourcesOpen(false); resBtn.focus(); }
+      // Fine-pointer desktop clicks must NOT collapse a flyout that is hovered.
+      // Touch/mobile retains normal click-to-toggle behaviour.
+      if (desktopHover() && e.detail > 0) resourcesOpen(true);
+      else resourcesOpen(resBtn.getAttribute("aria-expanded") !== "true");
     });
     res.addEventListener("keydown", function (e) {
       if (e.key === "Escape") { resourcesOpen(false); resBtn.focus(); e.stopPropagation(); }
     });
-    // When the whole Capacity menu is closed, its flyout also closes.
-    // Clicking the main menu again can reopen it with a clean state.
-    var capToggle = capLi.querySelector('.nav__toggle');
-    if (capToggle) {
-      capToggle.addEventListener("click", function () {
-        if (capToggle.getAttribute("aria-expanded") === "true") resourcesOpen(false);
-        else if (!resList.hidden) window.requestAnimationFrame(positionResourcesFlyout);
-      });
-    }
     document.addEventListener("click", function (e) {
       if (!capLi.contains(e.target) && !resList.hidden) resourcesOpen(false);
     });
     window.addEventListener("resize", function () {
       if (!resList.hidden) positionResourcesFlyout();
     });
-    // Resources only opens on click / keyboard activation, not mouseover.
+    // Resources: hover on desktop; click on touch and keyboard.
 
   }
 
@@ -248,48 +242,64 @@
       window.addEventListener("resize", function () { if (window.innerWidth > 1080) setOpen(false); });
     }
 
-    $all(".nav__toggle").forEach(function (toggle) {
-      var menu = document.getElementById(toggle.getAttribute("aria-controls"));
-      if (!menu) return;
-      var close = function () { toggle.setAttribute("aria-expanded", "false"); menu.classList.remove("is-open"); };
-      toggle.addEventListener("click", function (e) {
+    var hoverDesktop = function () {
+      return window.innerWidth > 1080 && window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+    };
+    var entries = $all(".nav__list > li", nav).map(function (item) {
+      var toggle = item.querySelector(":scope > .nav__toggle");
+      var menu = item.querySelector(":scope > .dropdown");
+      return toggle && menu ? { item: item, toggle: toggle, menu: menu } : null;
+    }).filter(Boolean);
+    function closeEntry(entry) {
+      entry.toggle.setAttribute("aria-expanded", "false");
+      entry.menu.classList.remove("is-open");
+      // An open Resources side panel cannot survive a parent menu exit.
+      var res = entry.menu.querySelector(".sp-resources");
+      if (res) {
+        res.classList.remove("is-open");
+        var subBtn = res.querySelector(".sp-resources__toggle");
+        var subMenu = res.querySelector(".sp-resources__list");
+        if (subBtn) subBtn.setAttribute("aria-expanded", "false");
+        if (subMenu) subMenu.hidden = true;
+      }
+    }
+    function openEntry(entry) {
+      entries.forEach(function (other) { if (other !== entry) closeEntry(other); });
+      entry.toggle.setAttribute("aria-expanded", "true");
+      entry.menu.classList.add("is-open");
+    }
+    entries.forEach(function (entry) {
+      entry.toggle.addEventListener("click", function (e) {
         e.stopPropagation();
-        var open = toggle.getAttribute("aria-expanded") !== "true";
-        toggle.setAttribute("aria-expanded", String(open));
-        menu.classList.toggle("is-open", open);
+        // Mouse hover opens and maintains state; a click must not close it.
+        // Keyboard and touch use standard toggle interaction.
+        if (hoverDesktop() && e.detail > 0) openEntry(entry);
+        else if (entry.toggle.getAttribute("aria-expanded") === "true") closeEntry(entry);
+        else openEntry(entry);
       });
-      document.addEventListener("click", function (e) {
-        if (window.innerWidth > 1080 && !menu.contains(e.target) && e.target !== toggle) close();
+      entry.item.addEventListener("pointerenter", function (e) {
+        if (hoverDesktop() && e.pointerType !== "touch") openEntry(entry);
       });
-      menu.addEventListener("keydown", function (e) { if (e.key === "Escape") { close(); toggle.focus(); } });
-      toggle.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
-      // Close the desktop dropdown when keyboard focus leaves it
-      menu.addEventListener("focusout", function (e) {
-        if (window.innerWidth > 1080 && !menu.contains(e.relatedTarget) && e.relatedTarget !== toggle) close();
+      entry.item.addEventListener("pointerleave", function (e) {
+        if (hoverDesktop() && e.pointerType !== "touch") closeEntry(entry);
+      });
+      entry.item.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { closeEntry(entry); entry.toggle.focus(); e.stopPropagation(); }
+      });
+      entry.item.addEventListener("focusout", function (e) {
+        if (!entry.item.contains(e.relatedTarget) && !entry.item.matches(":hover")) closeEntry(entry);
       });
     });
-
-    /* All desktop dropdowns: click to open, instant close on pointer exit.
-       The dropdown is a child of its list item, so moving between the toggle
-       and the panel is safe once the CSS gap is removed. Mobile stays click-only. */
-    $all(".nav__list > li", nav).forEach(function (item) {
-      var toggle = item.querySelector(":scope > .nav__toggle");
-      var dropdown = item.querySelector(":scope > .dropdown");
-      if (!toggle || !dropdown) return;
-      item.addEventListener("pointerleave", function (event) {
-        if (window.innerWidth <= 1080 || event.pointerType === "touch") return;
-        // If a submenu remains a DOM descendant, it is part of the hover area.
-        dropdown.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-        if (dropdown.id === "capacity-menu") {
-          var resources = dropdown.querySelector(".sp-resources");
-          var resButton = dropdown.querySelector(".sp-resources__toggle");
-          var resPanel = dropdown.querySelector(".sp-resources__list");
-          if (resources) resources.classList.remove("is-open");
-          if (resButton) resButton.setAttribute("aria-expanded", "false");
-          if (resPanel) resPanel.hidden = true;
-        }
-      });
+    document.addEventListener("pointerdown", function (e) {
+      if (!entries.some(function (entry) { return entry.item.contains(e.target); })) {
+        entries.forEach(closeEntry);
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") entries.forEach(closeEntry);
+    });
+    window.addEventListener("resize", function () {
+      entries.forEach(closeEntry);
     });
 
   }

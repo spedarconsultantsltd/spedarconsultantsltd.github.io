@@ -96,6 +96,24 @@
 @media(max-width:570px){.cx-hero__layout{padding-block:2.3rem}.cx-hero h1{font-size:clamp(2.45rem,10vw,3.2rem)}.cx-hero__actions{margin-top:1.25rem}.cx-hero__actions .btn{flex:1;justify-content:center}.cx-quick{grid-template-columns:1fr;gap:.65rem}.cx-quick>.cx-eyebrow{grid-column:auto}.cx-quick__item+.cx-quick__item{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding-left:0;padding-top:.65rem}.cx-main{padding-top:2.7rem}.cx-intro h2{font-size:2.25rem}.cx-offices{grid-template-columns:1fr}.cx-offices__label{grid-column:auto}.cx-location__map{height:210px;flex:none}.cx-footerbar__lead{align-items:start}.cx-footerbar__links a{flex:1;text-align:center}.cx-form .form__row{grid-template-columns:1fr;gap:0}}
 @media(prefers-reduced-motion:reduce){.cx-hero,.cx-quick,.cx-panel{scroll-behavior:auto}}
 
+
+/* Final contact refinement: compact social ribbon, balanced office/form grid. */
+.cx-socialbar{background:#f8faf6;border-bottom:1px solid #dce7df}
+.cx-socialbar__inner{display:flex;justify-content:space-between;align-items:center;gap:.8rem 2rem;min-height:68px;padding-block:.65rem}
+.cx-socialbar__label{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem .75rem;font:600 .86rem/1.45 var(--sans);color:var(--forest)}
+.cx-socialbar__dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.cx-socialbar__note{font:400 .8rem/1.45 var(--sans);color:var(--ink-soft)}
+.cx-socialbar__links{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.cx-socialbar__links a{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-width:116px;padding:.62rem .9rem;background:#fff;border:1px solid #cbdcd3;border-radius:3px;color:var(--forest);font:600 .84rem/1 var(--sans);text-decoration:none;box-shadow:0 2px 7px rgba(16,63,57,.045);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.cx-socialbar__links a svg{width:19px;height:19px;color:var(--teal)}
+.cx-socialbar__links a:hover,.cx-socialbar__links a:focus-visible{transform:translateY(-4px);background:#eaf4ef;border-color:var(--teal);box-shadow:0 9px 18px -12px rgba(16,63,57,.45)}
+.cx-grid{grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr)}
+.cx-offices{order:0}.cx-form-panel{order:1}
+@media(max-width:1030px) and (min-width:801px){.cx-grid{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}}
+@media(max-width:800px){.cx-grid{grid-template-columns:1fr}.cx-socialbar__inner{flex-wrap:wrap}.cx-socialbar__note{display:none}}
+@media(max-width:570px){.cx-socialbar__links{width:100%}.cx-socialbar__links a{flex:1;min-width:0}.cx-socialbar__inner{gap:.65rem}}
+@media(prefers-reduced-motion:reduce){.cx-socialbar__links a{transition:none}.cx-socialbar__links a:hover,.cx-socialbar__links a:focus-visible{transform:none}}
+
 </style>
 </head>
 <body>
@@ -114,6 +132,16 @@
     </nav>
   </div>
 </header>
+<!-- Social links immediately below the navigation. Original official accounts only. -->
+<div class="cx-socialbar" aria-label="SPEDAR social media">
+  <div class="wrap cx-socialbar__inner">
+    <div class="cx-socialbar__label"><span class="cx-socialbar__dot" aria-hidden="true"></span><span>Stay connected</span><span class="cx-socialbar__note">Follow SPEDAR's updates and opportunities</span></div>
+    <div class="cx-socialbar__links">
+      <a href="https://www.linkedin.com/company/spedar-consultants-ltd/" data-config="linkedin" target="_blank" rel="noopener noreferrer" aria-label="SPEDAR Consultants on LinkedIn (opens in new tab)"><svg aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-linkedin"></use></svg><span>LinkedIn</span></a>
+      <a href="https://www.facebook.com/spedarconsultantsltd" data-config="facebook" target="_blank" rel="noopener noreferrer" aria-label="SPEDAR Consultants on Facebook (opens in new tab)"><svg aria-hidden="true" focusable="false"><use href="assets/icons/icons.svg#i-facebook"></use></svg><span>Facebook</span></a>
+    </div>
+  </div>
+</div>
 <main id="main">
 <section class="cx-hero" aria-labelledby="cx-title">
  <div class="wrap cx-hero__layout">
@@ -138,8 +166,27 @@
    <p class="cx-intro__description">Share your project brief or contact one of our offices directly. We work across planning, infrastructure, GIS, environment, sustainability and digital consultancy.</p>
   </div>
   <div class="cx-grid">
+   <aside class="cx-offices" id="our-offices" aria-labelledby="cx-offices-heading">
+    <div class="cx-offices__label"><h3 id="cx-offices-heading">01 / Office locations</h3><span>Bangladesh</span></div>
+    <article class="cx-panel cx-location" aria-label="Head Office in Dhaka">
+<div class="cx-location__info">
+ <div class="cx-location__header"><h4 class="cx-location__title">Dhaka</h4><span class="cx-location__tag">Head Office</span></div>
+ <address>Ta-52/2, Boishakhi Sarani, Middle Badda, Link Road, Dhaka-1212, Bangladesh</address>
+ <a class="cx-location__link" href="https://www.google.com/maps/search/?api=1&amp;query=Ta-52%2F2%2C%20Boishakhi%20Sarani%2C%20Middle%20Badda%2C%20Link%20Road%2C%20Dhaka-1212%2C%20Bangladesh" target="_blank" rel="noopener noreferrer" aria-label="Open directions to Dhaka Head Office in Google Maps (new tab)">Directions on Google Maps <span aria-hidden="true">↗</span></a>
+</div>
+<div class="cx-location__map"><iframe title="Google Maps view for SPEDAR Head Office in Dhaka" src="https://www.google.com/maps?q=Ta-52%2F2%2C%20Boishakhi%20Sarani%2C%20Middle%20Badda%2C%20Link%20Road%2C%20Dhaka-1212%2C%20Bangladesh&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+</article>
+    <article class="cx-panel cx-location" aria-label="Regional Office in Rajshahi">
+<div class="cx-location__info">
+ <div class="cx-location__header"><h4 class="cx-location__title">Rajshahi</h4><span class="cx-location__tag">Regional Office</span></div>
+ <address>House No: 687, Terokhadia Uttarpara, Rajpara, Rajshahi Cantonment, Rajshahi-6202, Bangladesh</address>
+ <a class="cx-location__link" href="https://www.google.com/maps/search/?api=1&amp;query=House%20No%3A%20687%2C%20Terokhadia%20Uttarpara%2C%20Rajpara%2C%20Rajshahi%20Cantonment%2C%20Rajshahi-6202%2C%20Bangladesh" target="_blank" rel="noopener noreferrer" aria-label="Open directions to Rajshahi Regional Office in Google Maps (new tab)">Directions on Google Maps <span aria-hidden="true">↗</span></a>
+</div>
+<div class="cx-location__map"><iframe title="Google Maps view for SPEDAR Regional Office in Rajshahi" src="https://www.google.com/maps?q=House%20No%3A%20687%2C%20Terokhadia%20Uttarpara%2C%20Rajpara%2C%20Rajshahi%20Cantonment%2C%20Rajshahi-6202%2C%20Bangladesh&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+</article>
+   </aside>
    <div class="cx-panel cx-form-panel" id="send-enquiry">
-    <div class="cx-form-panel__header"><span class="cx-panel__eyebrow">01 / PROJECT ENQUIRY</span><h3>Tell us about your assignment</h3><p>A brief description helps us understand your scope and connect you with the right expertise.</p></div>
+    <div class="cx-form-panel__header"><span class="cx-panel__eyebrow">02 / PROJECT ENQUIRY</span><h3>Tell us about your assignment</h3><p>A brief description helps us understand your scope and connect you with the right expertise.</p></div>
     <form class="form cx-form" id="contact-form" action="mailto:info@spedar.com" method="post" enctype="text/plain" novalidate>
      <div class="form__row">
       <div class="field"><label for="name">Full name <span aria-hidden="true">*</span></label><input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required aria-describedby="name-error"><p class="field__error" id="name-error"></p></div>
@@ -171,32 +218,7 @@
      <p class="form__status" role="status" aria-live="polite"></p>
     </form>
    </div>
-   <aside class="cx-offices" id="our-offices" aria-labelledby="cx-offices-heading">
-    <div class="cx-offices__label"><h3 id="cx-offices-heading">02 / Office locations</h3><span>Bangladesh</span></div>
-    <article class="cx-panel cx-location" aria-label="Head Office in Dhaka">
-<div class="cx-location__info">
- <div class="cx-location__header"><h4 class="cx-location__title">Dhaka</h4><span class="cx-location__tag">Head Office</span></div>
- <address>Ta-52/2, Boishakhi Sarani, Middle Badda, Link Road, Dhaka-1212, Bangladesh</address>
- <a class="cx-location__link" href="https://www.google.com/maps/search/?api=1&amp;query=Ta-52%2F2%2C%20Boishakhi%20Sarani%2C%20Middle%20Badda%2C%20Link%20Road%2C%20Dhaka-1212%2C%20Bangladesh" target="_blank" rel="noopener noreferrer" aria-label="Open directions to Dhaka Head Office in Google Maps (new tab)">Directions on Google Maps <span aria-hidden="true">↗</span></a>
-</div>
-<div class="cx-location__map"><iframe title="Google Maps view for SPEDAR Head Office in Dhaka" src="https://www.google.com/maps?q=Ta-52%2F2%2C%20Boishakhi%20Sarani%2C%20Middle%20Badda%2C%20Link%20Road%2C%20Dhaka-1212%2C%20Bangladesh&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
-</article>
-    <article class="cx-panel cx-location" aria-label="Regional Office in Rajshahi">
-<div class="cx-location__info">
- <div class="cx-location__header"><h4 class="cx-location__title">Rajshahi</h4><span class="cx-location__tag">Regional Office</span></div>
- <address>House No: 687, Terokhadia Uttarpara, Rajpara, Rajshahi Cantonment, Rajshahi-6202, Bangladesh</address>
- <a class="cx-location__link" href="https://www.google.com/maps/search/?api=1&amp;query=House%20No%3A%20687%2C%20Terokhadia%20Uttarpara%2C%20Rajpara%2C%20Rajshahi%20Cantonment%2C%20Rajshahi-6202%2C%20Bangladesh" target="_blank" rel="noopener noreferrer" aria-label="Open directions to Rajshahi Regional Office in Google Maps (new tab)">Directions on Google Maps <span aria-hidden="true">↗</span></a>
-</div>
-<div class="cx-location__map"><iframe title="Google Maps view for SPEDAR Regional Office in Rajshahi" src="https://www.google.com/maps?q=House%20No%3A%20687%2C%20Terokhadia%20Uttarpara%2C%20Rajpara%2C%20Rajshahi%20Cantonment%2C%20Rajshahi-6202%2C%20Bangladesh&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
-</article>
-   </aside>
   </div>
- </div>
-</section>
-<section class="cx-footerbar" aria-label="Additional ways to connect">
- <div class="wrap cx-footerbar__inner">
-  <div class="cx-footerbar__lead"><span aria-hidden="true">↗</span><div><h2>Stay connected with SPEDAR</h2><p>Explore our work, research and consultancy updates.</p></div></div>
-  <div class="cx-footerbar__links"><a href="https://www.linkedin.com/company/spedar-consultants-ltd/" data-config="linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://www.facebook.com/spedarconsultantsltd" data-config="facebook" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="project-brief.html">Project brief ↗</a></div>
  </div>
 </section>
 </main>

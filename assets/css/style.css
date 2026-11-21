@@ -991,3 +991,13 @@ figcaption, .caption { font-size: .82rem; color: var(--ink-soft); margin-top: .7
 @media (max-width:1050px){ .spc-hero__grid{grid-template-columns:1fr;}.spc-hero__aside{display:none;}.spc-office-grid{gap:1rem;}.spc-office__map{height:240px;}.spc-enquiry__grid{gap:2.5rem;} }
 @media (max-width:800px){ .spc-connect__grid{grid-template-columns:1fr;}.spc-connect__item,.spc-connect__item + .spc-connect__item{padding:1.45rem 0;border-left:0;border-top:1px solid var(--line);}.spc-connect__item:first-child{border-top:0;}.spc-office-grid{grid-template-columns:1fr;}.spc-section-head{display:block;}.spc-section-head > p{margin-top:.8rem;}.spc-office__details{min-height:220px;}.spc-enquiry__grid{grid-template-columns:1fr;}.spc-enquiry__intro h2{max-width:22ch;}.spc-last__inner{align-items:flex-start;flex-direction:column;} }
 @media (max-width:500px){ .spc-hero__grid{padding-block:3rem 3.6rem;}.spc-hero .breadcrumb{margin-bottom:2rem;}.spc-hero h1{font-size:2.6rem;}.spc-hero__actions{flex-direction:column;align-items:stretch;}.spc-hero__actions .btn{justify-content:center;}.spc-office__map{height:225px;}.spc-form .form__row{grid-template-columns:1fr;gap:0;}.spc-office__details{padding:1.3rem;}.spc-connect__value{font-size:1.24rem;}}
+
+/* SPEDAR 2026 final: cursor-controlled desktop navigation (zero close delay).
+   No CSS :hover auto-timer; JS controls aria-expanded and the open class.
+   The panel abuts its trigger and its Resources flyout has no pointer gap. */
+@media(min-width:1081px) and (hover:hover) and (pointer:fine){
+ .nav__list>li>.dropdown{top:100%;transition:none!important;animation:none!important;transform:none!important;opacity:0;visibility:hidden;pointer-events:none}
+ .nav__list>li>.dropdown.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:none!important;animation:none!important}
+ .sp-resources__list{left:100%;transition:none!important}
+ .sp-resources--open-left>.sp-resources__list{left:auto;right:100%}
+}

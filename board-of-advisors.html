@@ -240,17 +240,100 @@
     </nav>
   </div>
 </header>
-<main id="main">
-<section class="about-empty" aria-labelledby="blank-page-title">
+
+<style id="board-advisors-only">
+.advisors-page{background:var(--paper);color:var(--ink);padding:clamp(3rem,6vw,5.5rem) 0 5rem}
+.advisors-page .wrap{width:min(1180px,calc(100% - 2.5rem));margin-inline:auto}
+.advisors-page .advisor-crumb{display:flex;gap:.65rem;align-items:center;font-size:.82rem;color:var(--ink-soft);margin-bottom:2.8rem}
+.advisors-page .advisor-crumb a{color:inherit;text-decoration:none}
+.advisors-page .advisor-eyebrow{font:600 .72rem/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal-ink);margin:0 0 .9rem}
+.advisors-page h1{font:500 clamp(2.7rem,5.2vw,4.8rem)/1.04 var(--serif);letter-spacing:-.035em;color:var(--forest);max-width:15ch;margin:0 0 1.2rem}
+.advisors-page .advisor-intro{max-width:760px;color:var(--ink-soft);font-size:1.08rem;line-height:1.75;margin:0 0 3.2rem}
+.advisors-page .advisor-rule{height:1px;background:var(--line-strong);margin-bottom:2.5rem}
+.advisors-page .advisor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;align-items:stretch}
+.advisors-page .advisor-card{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.advisors-page .advisor-photo{width:100%;aspect-ratio:4/4.25;object-fit:cover;object-position:center 28%;display:block;background:var(--sage)}
+.advisors-page .advisor-card:nth-child(1) .advisor-photo{object-position:center 22%}
+.advisors-page .advisor-card:nth-child(2) .advisor-photo{object-position:center 25%}
+.advisors-page .advisor-card:nth-child(3) .advisor-photo{object-position:center 20%}
+.advisors-page .advisor-content{padding:1.55rem 1.5rem 1.7rem;display:flex;flex-direction:column;flex:1}
+.advisors-page .advisor-index{font:600 .68rem/1.4 var(--sans);letter-spacing:.14em;color:var(--teal-ink);text-transform:uppercase;margin:0 0 .8rem}
+.advisors-page .advisor-name{font:500 clamp(1.45rem,1.6vw,1.85rem)/1.18 var(--serif);color:var(--forest);margin:0 0 .65rem}
+.advisors-page .advisor-role{font:600 .78rem/1.5 var(--sans);letter-spacing:.045em;color:var(--teal-ink);margin:0 0 1.1rem}
+.advisors-page .advisor-bio{font-size:.91rem;line-height:1.72;color:var(--ink-soft);margin:0 0 1.25rem}
+.advisors-page .advisor-expertise{border-top:1px solid var(--line);padding-top:1rem;margin-top:auto}
+.advisors-page .advisor-expertise h3{font:600 .68rem/1.4 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .7rem}
+.advisors-page .advisor-tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.advisors-page .advisor-tags span{font-size:.73rem;line-height:1.35;color:var(--forest);background:var(--sage);padding:.38rem .55rem}
+.advisors-page .advisor-note{margin:2rem 0 0;color:var(--ink-soft);font-size:.82rem;line-height:1.6}
+@media(max-width:900px){.advisors-page .advisor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.advisors-page{padding-top:2.2rem}.advisors-page .wrap{width:min(100% - 2rem,480px)}.advisors-page .advisor-crumb{margin-bottom:2rem}.advisors-page .advisor-intro{margin-bottom:2.2rem}.advisors-page .advisor-grid{grid-template-columns:1fr;gap:1rem}.advisors-page .advisor-photo{aspect-ratio:5/4}.advisors-page .advisor-content{padding:1.3rem}}
+</style>
+<main id="main" class="advisors-page">
   <div class="wrap">
-    <nav class="about-empty__crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="about.html">About Us</a><span aria-hidden="true">/</span><span aria-current="page">Board of Advisors</span></nav>
-    <p class="about-empty__eyebrow">About SPEDAR</p>
-    <h1 id="blank-page-title">Board of Advisors</h1>
-    <span class="about-empty__rule" aria-hidden="true"></span>
-    <!-- CONTENT INTENTIONALLY LEFT EMPTY: add approved information later. -->
+    <nav class="advisor-crumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span aria-hidden="true">/</span>
+      <a href="about.html">About Us</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Board of Advisors</span>
+    </nav>
+    <p class="advisor-eyebrow">About SPEDAR</p>
+    <h1>Board of Advisors</h1>
+    <p class="advisor-intro">Our Board of Advisors brings together experience in urban and regional planning, geospatial intelligence, climate resilience, research and development programme management. Their guidance strengthens the evidence, technical quality and practical relevance of SPEDAR’s consultancy work.</p>
+    <div class="advisor-rule" aria-hidden="true"></div>
+
+    <section class="advisor-grid" aria-label="SPEDAR Board of Advisors">
+      <article class="advisor-card">
+        <img class="advisor-photo" src="assets/images/advisors/md-kamrul-hasan.webp" alt="Md. Kamrul Hasan" loading="lazy" width="640" height="800">
+        <div class="advisor-content">
+          <p class="advisor-index">Advisor 01</p>
+          <h2 class="advisor-name">Md. Kamrul Hasan</h2>
+          <p class="advisor-role">Advisor – Urban Planning, Climate Resilience &amp; Environmental Management</p>
+          <p class="advisor-bio">An urban and regional planning academic at Pabna University of Science and Technology, with research experience in climate-change vulnerability and adaptation, disaster risk reduction, flood and seismic vulnerability, internal migration, local governance and urbanisation. His work includes UGC- and Ministry of Planning-funded research and peer-reviewed publications on planning and climate resilience.</p>
+          <div class="advisor-expertise">
+            <h3>Areas of expertise</h3>
+            <div class="advisor-tags">
+              <span>Urban &amp; Regional Planning</span><span>Climate Adaptation</span><span>Disaster Risk Reduction</span><span>Environmental Planning</span><span>Vulnerability Assessment</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="advisor-card">
+        <img class="advisor-photo" src="assets/images/advisors/saimunnahar-ritu.webp" alt="Saimunnahar Ritu" loading="lazy" width="1365" height="2048">
+        <div class="advisor-content">
+          <p class="advisor-index">Advisor 02</p>
+          <h2 class="advisor-name">Saimunnahar Ritu</h2>
+          <p class="advisor-role">Advisor – GIS, Remote Sensing &amp; Geospatial Intelligence</p>
+          <p class="advisor-bio">A Lecturer in Urban and Regional Planning at Pabna University of Science and Technology and former National GIS Specialist with the Food and Agriculture Organization of the United Nations. Her professional experience includes national and field-level GIS support, forest-resource monitoring, land-cover datasets, web mapping, the Dhaka Food System Atlas and geospatial work in refugee and host communities.</p>
+          <div class="advisor-expertise">
+            <h3>Areas of expertise</h3>
+            <div class="advisor-tags">
+              <span>GIS &amp; Remote Sensing</span><span>Google Earth Engine</span><span>Web GIS &amp; Mapping</span><span>Land Cover Analysis</span><span>Geospatial Data</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="advisor-card">
+        <img class="advisor-photo" src="assets/images/advisors/naushad-mahboob-mirja.webp" alt="Naushad Mahboob Mirja" loading="lazy" width="236" height="295">
+        <div class="advisor-content">
+          <p class="advisor-index">Advisor 03</p>
+          <h2 class="advisor-name">Naushad Mahboob Mirja</h2>
+          <p class="advisor-role">Advisor – Research, MEAL &amp; Development Programme Strategy</p>
+          <p class="advisor-bio">A development practitioner with an MSc in Economics from Jahangirnagar University and extensive programme, monitoring and research experience at INCIDIN Bangladesh. He currently manages the J-TIP Programme and serves as the organisation’s MEAL focal person and KoBo expert. His research portfolio includes child protection, human trafficking, social vulnerability, disability inclusion and development programme baselines.</p>
+          <div class="advisor-expertise">
+            <h3>Areas of expertise</h3>
+            <div class="advisor-tags">
+              <span>Research &amp; Evaluation</span><span>MEAL Systems</span><span>Project Management</span><span>KoBoToolbox</span><span>Development Programmes</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <p class="advisor-note">The profiles summarise relevant professional experience and areas of expertise based on the advisors’ submitted CVs.</p>
   </div>
-</section>
 </main>
+
 <footer class="site-footer on-dark">
   <div class="wrap">
     <div class="footer-grid">
